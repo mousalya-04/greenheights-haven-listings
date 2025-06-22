@@ -15,6 +15,9 @@ import Favorites from "./pages/Favorites";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import BlockDetails from "./pages/BlockDetails";
+import ApartmentDetails from "./pages/ApartmentDetails";
+import FacilityDetails from "./pages/FacilityDetails";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +37,10 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/apartments" element={<Apartments />} />
+                    <Route path="/apartment/:id" element={<ApartmentDetails />} />
+                    <Route path="/block/:blockId" element={<BlockDetails />} />
                     <Route path="/facilities" element={<Facilities />} />
+                    <Route path="/facility/:id" element={<FacilityDetails />} />
                     <Route path="/reviews" element={<Reviews />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/favorites" element={<Favorites />} />
