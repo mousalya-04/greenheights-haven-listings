@@ -13,6 +13,7 @@ import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import Favorites from "./pages/Favorites";
 import Cart from "./pages/Cart";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,21 +25,27 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/apartments" element={<Apartments />} />
-              <Route path="/facilities" element={<Facilities />} />
-              <Route path="/reviews" element={<Reviews />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/cart" element={<Cart />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/apartments" element={<Apartments />} />
+                    <Route path="/facilities" element={<Facilities />} />
+                    <Route path="/reviews" element={<Reviews />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </>
+            } />
+          </Routes>
         </div>
       </BrowserRouter>
     </TooltipProvider>

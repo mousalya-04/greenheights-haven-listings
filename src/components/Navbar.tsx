@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, User } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,12 +15,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">GH</span>
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">GreenHeights</h1>
-              <p className="text-xs text-green-600">Residency</p>
+              <p className="text-xs text-emerald-600">Residency</p>
             </div>
           </Link>
 
@@ -29,7 +29,7 @@ const Navbar = () => {
             <Link 
               to="/" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/') ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                isActive('/') ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'
               }`}
             >
               Home
@@ -37,7 +37,7 @@ const Navbar = () => {
             <Link 
               to="/apartments" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/apartments') ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                isActive('/apartments') ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'
               }`}
             >
               Apartments
@@ -45,7 +45,7 @@ const Navbar = () => {
             <Link 
               to="/facilities" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/facilities') ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                isActive('/facilities') ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'
               }`}
             >
               Facilities
@@ -53,7 +53,7 @@ const Navbar = () => {
             <Link 
               to="/reviews" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/reviews') ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                isActive('/reviews') ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'
               }`}
             >
               Reviews
@@ -61,7 +61,7 @@ const Navbar = () => {
             <Link 
               to="/contact" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/contact') ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                isActive('/contact') ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'
               }`}
             >
               Contact
@@ -70,12 +70,12 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
+            <button className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
               <Search size={20} />
             </button>
             <Link 
               to="/favorites" 
-              className="p-2 text-gray-600 hover:text-green-600 transition-colors relative"
+              className="p-2 text-gray-600 hover:text-emerald-600 transition-colors relative"
             >
               <Heart size={20} />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -84,12 +84,19 @@ const Navbar = () => {
             </Link>
             <Link 
               to="/cart" 
-              className="p-2 text-gray-600 hover:text-green-600 transition-colors relative"
+              className="p-2 text-gray-600 hover:text-emerald-600 transition-colors relative"
             >
               <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
+            </Link>
+            <Link 
+              to="/login" 
+              className="flex items-center space-x-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all"
+            >
+              <User size={18} />
+              <span className="text-sm font-medium">Login</span>
             </Link>
 
             {/* Mobile menu button */}
@@ -108,38 +115,45 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
                 to="/" 
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/apartments" 
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apartments
               </Link>
               <Link 
                 to="/facilities" 
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Facilities
               </Link>
               <Link 
                 to="/reviews" 
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reviews
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-emerald-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
+              </Link>
+              <Link 
+                to="/login" 
+                className="block px-3 py-2 text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Login
               </Link>
             </div>
           </div>
