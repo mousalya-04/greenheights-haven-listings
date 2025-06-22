@@ -16,6 +16,7 @@ export interface Apartment {
   type: 'Studio' | '1BHK' | '2BHK' | '3BHK' | '4BHK' | 'Duplex';
   accessibility: string[];
   amenities: string[];
+  image: string; // Main display image
   images: {
     main: string;
     kitchen: string;
@@ -46,6 +47,7 @@ export const apartments: Apartment[] = [
     type: '1BHK',
     accessibility: ['Ground Floor', 'Wheelchair Accessible'],
     amenities: ['Garden View', 'Parking', 'Wi-Fi'],
+    image: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=400&h=300&fit=crop',
     images: {
       main: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=400&h=300&fit=crop',
       kitchen: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop',
@@ -72,6 +74,7 @@ export const apartments: Apartment[] = [
     type: '2BHK',
     accessibility: ['Ground Floor', 'Elevator Access'],
     amenities: ['Garden View', 'Parking', 'Security'],
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop',
     images: {
       main: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop',
       kitchen: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400&h=300&fit=crop',
@@ -98,6 +101,7 @@ export const apartments: Apartment[] = [
     type: 'Studio',
     accessibility: ['Ground Floor'],
     amenities: ['Garden View', 'Compact Living'],
+    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=300&fit=crop',
     images: {
       main: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=300&fit=crop',
       kitchen: 'https://images.unsplash.com/photo-1556909114-b14ea2c5b0db?w=400&h=300&fit=crop',
@@ -107,8 +111,6 @@ export const apartments: Apartment[] = [
       balcony: 'https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=400&h=300&fit=crop'
     }
   }
-  // Adding more apartments... (I'll continue with a few more examples and indicate that there are 50+ total)
-  // This pattern continues for all 50+ apartments across blocks A-E
 ];
 
 export const blockFeatures = {
@@ -153,6 +155,3 @@ export const blockFeatures = {
     color: 'from-red-400 to-red-600'
   }
 };
-
-// Note: In a real application, we would have all 50+ apartments defined here
-// For brevity, I'm showing the structure with a few examples
