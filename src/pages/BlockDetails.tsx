@@ -113,6 +113,8 @@ const BlockDetails = () => {
                   apartment={apartment}
                   onAddToFavorites={() => {}}
                   onAddToCart={() => {}}
+                  isFavorited={false}
+                  isInCart={false}
                 />
               ))}
             </div>

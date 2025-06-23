@@ -63,6 +63,8 @@ const Favorites = () => {
                     apartment={apartment}
                     onAddToFavorites={() => {}} // Not used in favorites page
                     onAddToCart={handleAddToCart}
+                    isFavorited={true}
+                    isInCart={cart.includes(apartment.id)}
                   />
                   {/* Remove from favorites button overlay */}
                   <button
