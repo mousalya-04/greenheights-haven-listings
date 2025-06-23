@@ -142,7 +142,7 @@ const ApartmentDetails = () => {
                   <Home className="text-gray-500 mr-2" size={20} />
                   <div>
                     <div className="font-medium">{apartment.type}</div>
-                    <div className="text-sm text-gray-500">{apartment.size} sq ft</div>
+                    <div className="text-sm text-gray-500">{apartment.sqft} sq ft</div>
                   </div>
                 </div>
                 <div>
@@ -182,16 +182,16 @@ const ApartmentDetails = () => {
                 </div>
               </div>
 
-              {/* Amenities */}
+              {/* Features */}
               <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3">Amenities</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Features</h3>
                 <div className="flex flex-wrap gap-2">
-                  {apartment.amenities.map((amenity, index) => (
+                  {apartment.features.map((feature, index) => (
                     <span 
                       key={index}
                       className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
                     >
-                      {amenity}
+                      {feature}
                     </span>
                   ))}
                 </div>
@@ -258,4 +258,3 @@ const ApartmentDetails = () => {
 };
 
 export default ApartmentDetails;
-

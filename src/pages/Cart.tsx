@@ -5,7 +5,7 @@ import { apartments } from '../data/apartments';
 
 const Cart = () => {
   // Mock cart data - in real app this would come from state/localStorage
-  const [cart, setCart] = useState<string[]>(['a101', 'b102']);
+  const [cart, setCart] = useState<string[]>(['a101', 'b104']);
   const [selectedPeriod, setSelectedPeriod] = useState<'monthly' | 'yearly'>('monthly');
 
   const cartApartments = apartments.filter(apt => cart.includes(apt.id));
@@ -108,7 +108,7 @@ const Cart = () => {
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600 mb-4">
-                        <div>Size: {apartment.size} sq ft</div>
+                        <div>Size: {apartment.sqft} sq ft</div>
                         <div>{apartment.bedrooms} BHK</div>
                         <div>{apartment.bathrooms} Bathrooms</div>
                         <div>{apartment.furnishing}</div>
