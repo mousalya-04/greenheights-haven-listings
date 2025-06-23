@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -18,6 +19,7 @@ const Login = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     alert(isSignUp ? 'Account created successfully!' : 'Login successful!');
+    navigate('/home');
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

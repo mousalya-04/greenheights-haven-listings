@@ -1,12 +1,48 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Heart, ShoppingCart, Menu, X, User } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [favoritesCount, setFavoritesCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
+
+  // Load counts from localStorage on component mount
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('favorites');
+    const savedCart = localStorage.getItem('cart');
+    
+    if (savedFavorites) {
+      setFavoritesCount(JSON.parse(savedFavorites).length);
+    }
+    if (savedCart) {
+      setCartCount(JSON.parse(savedCart).length);
+    }
+
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      const favorites = localStorage.getItem('favorites');
+      const cart = localStorage.getItem('cart');
+      
+      setFavoritesCount(favorites ? JSON.parse(favorites).length : 0);
+      setCartCount(cart ? JSON.parse(cart).length : 0);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Also listen for custom events when items are added/removed
+    window.addEventListener('favoritesUpdated', handleStorageChange);
+    window.addEventListener('cartUpdated', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('favoritesUpdated', handleStorageChange);
+      window.removeEventListener('cartUpdated', handleStorageChange);
+    };
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -22,7 +58,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/home" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">MR</span>
             </div>
@@ -49,9 +85,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link 
-              to="/" 
+              to="/home" 
               className={`text-sm font-medium transition-colors ${
-                isActive('/') ? 'text-yellow-300' : 'text-white hover:text-yellow-200'
+                isActive('/home') ? 'text-yellow-300' : 'text-white hover:text-yellow-200'
               }`}
             >
               Home
@@ -97,18 +133,22 @@ const Navbar = () => {
               className="p-2 text-white hover:text-yellow-200 transition-colors relative"
             >
               <Heart size={20} />
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
+              {favoritesCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {favoritesCount}
+                </span>
+              )}
             </Link>
             <Link 
               to="/cart" 
               className="p-2 text-white hover:text-yellow-200 transition-colors relative"
             >
               <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </Link>
             <Link 
               to="/login" 
@@ -147,7 +187,7 @@ const Navbar = () => {
           <div className="md:hidden border-t border-white/20 bg-black/20 backdrop-blur-sm">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
-                to="/" 
+                to="/home" 
                 className="block px-3 py-2 text-sm font-medium text-white hover:text-yellow-200"
                 onClick={() => setIsMenuOpen(false)}
               >

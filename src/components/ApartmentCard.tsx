@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, ShoppingCart, Star, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -20,19 +20,76 @@ interface ApartmentCardProps {
     reviews: number;
     image: string;
   };
-  onAddToFavorites: (id: string) => void;
-  onAddToCart: (id: string) => void;
-  isFavorited?: boolean;
-  isInCart?: boolean;
+  onAddToFavorites?: (id: string) => void;
+  onAddToCart?: (id: string) => void;
 }
 
 const ApartmentCard: React.FC<ApartmentCardProps> = ({ 
   apartment, 
-  onAddToFavorites, 
-  onAddToCart,
-  isFavorited = false,
-  isInCart = false
+  onAddToFavorites,
+  onAddToCart
 }) => {
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    // Check if apartment is in favorites
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setIsFavorited(favorites.includes(apartment.id));
+
+    // Check if apartment is in cart
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    setIsInCart(cart.includes(apartment.id));
+  }, [apartment.id]);
+
+  const handleAddToFavorites = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    
+    if (isFavorited) {
+      // Remove from favorites
+      const updatedFavorites = favorites.filter((id: string) => id !== apartment.id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorited(false);
+    } else {
+      // Add to favorites
+      const updatedFavorites = [...favorites, apartment.id];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorited(true);
+    }
+
+    // Trigger custom event to update navbar
+    window.dispatchEvent(new Event('favoritesUpdated'));
+    
+    if (onAddToFavorites) {
+      onAddToFavorites(apartment.id);
+    }
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    if (isInCart) {
+      // Remove from cart
+      const updatedCart = cart.filter((id: string) => id !== apartment.id);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      setIsInCart(false);
+    } else {
+      // Add to cart
+      const updatedCart = [...cart, apartment.id];
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      setIsInCart(true);
+    }
+
+    // Trigger custom event to update navbar
+    window.dispatchEvent(new Event('cartUpdated'));
+    
+    if (onAddToCart) {
+      onAddToCart(apartment.id);
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
@@ -46,10 +103,7 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
         </Link>
         <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
           <button 
-            onClick={(e) => {
-              e.preventDefault();
-              onAddToFavorites(apartment.id);
-            }}
+            onClick={handleAddToFavorites}
             className={`transition-colors ${
               isFavorited 
                 ? 'text-red-500' 
@@ -75,7 +129,7 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
         <div className="flex justify-between items-start mb-2">
           <div>
             <Link to={`/apartment/${apartment.id}`}>
-              <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors cursor-pointer">
+              <h3 className="text-lg font-semibold text-gray-900 hover:text-purple-600 transition-colors cursor-pointer">
                 {apartment.block}-{apartment.number}
               </h3>
             </Link>
@@ -119,10 +173,7 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
 
         <div className="flex space-x-2">
           <button 
-            onClick={(e) => {
-              e.preventDefault();
-              onAddToCart(apartment.id);
-            }}
+            onClick={handleAddToCart}
             disabled={!apartment.available}
             className={`flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-colors ${
               apartment.available
@@ -147,4 +198,3 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
 };
 
 export default ApartmentCard;
-

@@ -1,13 +1,15 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Apartments from "./pages/Apartments";
 import Facilities from "./pages/Facilities";
+import FacilityDetails from "./pages/FacilityDetails";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import Favorites from "./pages/Favorites";
@@ -28,17 +30,27 @@ const App = () => (
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Routes>
+            <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/home" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <Home />
+                </main>
+                <Footer />
+              </>
+            } />
             <Route path="/*" element={
               <>
                 <Navbar />
                 <main className="flex-1">
                   <Routes>
-                    <Route path="/" element={<Home />} />
                     <Route path="/apartments" element={<Apartments />} />
                     <Route path="/apartment/:id" element={<ApartmentDetails />} />
                     <Route path="/block/:blockId" element={<BlockDetails />} />
                     <Route path="/facilities" element={<Facilities />} />
+                    <Route path="/facility/:facilityId" element={<FacilityDetails />} />
                     <Route path="/schedule-visit" element={<ScheduleVisit />} />
                     <Route path="/reviews" element={<Reviews />} />
                     <Route path="/contact" element={<Contact />} />
