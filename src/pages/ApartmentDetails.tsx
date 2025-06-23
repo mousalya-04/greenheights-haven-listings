@@ -27,7 +27,7 @@ const ApartmentDetails = () => {
     { key: 'bedroom', label: 'Bedroom' },
     { key: 'bathroom', label: 'Bathroom' },
     { key: 'balcony', label: 'Balcony' },
-    ...(apartment.images.dining ? [{ key: 'dining', label: 'Dining' }] : [])
+    { key: 'diningArea', label: 'Dining Area' }
   ];
 
   return (
@@ -119,12 +119,10 @@ const ApartmentDetails = () => {
                   <span className="text-gray-600">Kitchen:</span>
                   <span className="font-medium">1</span>
                 </div>
-                {apartment.images.dining && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Dining Area:</span>
-                    <span className="font-medium">1</span>
-                  </div>
-                )}
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Dining Area:</span>
+                  <span className="font-medium">1</span>
+                </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Balconies:</span>
                   <span className="font-medium">{apartment.balconies}</span>

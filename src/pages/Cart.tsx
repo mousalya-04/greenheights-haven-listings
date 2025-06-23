@@ -80,7 +80,7 @@ const Cart = () => {
                     {/* Image */}
                     <div className="w-full md:w-48 h-32 flex-shrink-0">
                       <img
-                        src={apartment.image}
+                        src={apartment.images.main}
                         alt={`Apartment ${apartment.block}-${apartment.number}`}
                         className="w-full h-full object-cover rounded-lg"
                       />
