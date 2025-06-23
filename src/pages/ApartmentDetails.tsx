@@ -26,7 +26,8 @@ const ApartmentDetails = () => {
     { key: 'kitchen', label: 'Kitchen' },
     { key: 'bedroom', label: 'Bedroom' },
     { key: 'bathroom', label: 'Bathroom' },
-    { key: 'balcony', label: 'Balcony' }
+    { key: 'balcony', label: 'Balcony' },
+    ...(apartment.images.dining ? [{ key: 'dining', label: 'Dining' }] : [])
   ];
 
   return (
@@ -68,21 +69,22 @@ const ApartmentDetails = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image Gallery */}
+          {/* Room Gallery */}
           <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Room Gallery</h2>
             <div className="mb-4">
               <img 
                 src={apartment.images[selectedImage as keyof typeof apartment.images]} 
-                alt={`Apartment ${apartment.block}-${apartment.number}`}
+                alt={`${selectedImage} - Apartment ${apartment.block}-${apartment.number}`}
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
               />
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2 mb-6">
               {imageOptions.map(option => (
                 <button
                   key={option.key}
                   onClick={() => setSelectedImage(option.key)}
-                  className={`p-2 rounded-lg text-xs font-medium transition-colors ${
+                  className={`p-3 rounded-lg text-sm font-medium transition-colors ${
                     selectedImage === option.key
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -91,6 +93,43 @@ const ApartmentDetails = () => {
                   {option.label}
                 </button>
               ))}
+            </div>
+
+            {/* Room Details */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Room Details</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Total Rooms:</span>
+                  <span className="font-medium">{apartment.bedrooms + apartment.bathrooms + 2} rooms</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Bedrooms:</span>
+                  <span className="font-medium">{apartment.bedrooms}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Bathrooms:</span>
+                  <span className="font-medium">{apartment.bathrooms}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Living Room:</span>
+                  <span className="font-medium">1</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Kitchen:</span>
+                  <span className="font-medium">1</span>
+                </div>
+                {apartment.images.dining && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Dining Area:</span>
+                    <span className="font-medium">1</span>
+                  </div>
+                )}
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Balconies:</span>
+                  <span className="font-medium">{apartment.balconies}</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -119,6 +158,27 @@ const ApartmentDetails = () => {
                   <div className={`text-sm ${apartment.available ? 'text-green-600' : 'text-red-600'}`}>
                     {apartment.available ? 'Available' : 'Occupied'}
                   </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mb-6">
+                <h3 className="font-semibold text-gray-900 mb-3">Description</h3>
+                <p className="text-gray-600">{apartment.description}</p>
+              </div>
+
+              {/* Unique Features */}
+              <div className="mb-6">
+                <h3 className="font-semibold text-gray-900 mb-3">Unique Features</h3>
+                <div className="flex flex-wrap gap-2">
+                  {apartment.uniqueFeatures.map((feature, index) => (
+                    <span 
+                      key={index}
+                      className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm"
+                    >
+                      {feature}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -176,12 +236,18 @@ const ApartmentDetails = () => {
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Interested in this apartment?</h3>
               <div className="space-y-3">
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                <Link 
+                  to="/schedule-visit"
+                  className="block w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors text-center"
+                >
                   Schedule a Visit
-                </button>
-                <button className="w-full border border-blue-600 text-blue-600 py-3 rounded-lg hover:bg-blue-50 transition-colors">
+                </Link>
+                <Link 
+                  to="/contact"
+                  className="block w-full border border-blue-600 text-blue-600 py-3 rounded-lg hover:bg-blue-50 transition-colors text-center"
+                >
                   Contact Agent
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -192,3 +258,4 @@ const ApartmentDetails = () => {
 };
 
 export default ApartmentDetails;
+

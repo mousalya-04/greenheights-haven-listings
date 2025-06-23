@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Heart, ShoppingCart, Star, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ApartmentCardProps {
   apartment: {
@@ -21,28 +22,41 @@ interface ApartmentCardProps {
   };
   onAddToFavorites: (id: string) => void;
   onAddToCart: (id: string) => void;
+  isFavorited?: boolean;
+  isInCart?: boolean;
 }
 
 const ApartmentCard: React.FC<ApartmentCardProps> = ({ 
   apartment, 
   onAddToFavorites, 
-  onAddToCart 
+  onAddToCart,
+  isFavorited = false,
+  isInCart = false
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
       <div className="relative h-48">
-        <img 
-          src={apartment.image} 
-          alt={`Apartment ${apartment.number}`}
-          className="w-full h-full object-cover"
-        />
+        <Link to={`/apartment/${apartment.id}`}>
+          <img 
+            src={apartment.image} 
+            alt={`Apartment ${apartment.number}`}
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+          />
+        </Link>
         <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
           <button 
-            onClick={() => onAddToFavorites(apartment.id)}
-            className="text-gray-600 hover:text-red-500 transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              onAddToFavorites(apartment.id);
+            }}
+            className={`transition-colors ${
+              isFavorited 
+                ? 'text-red-500' 
+                : 'text-gray-600 hover:text-red-500'
+            }`}
           >
-            <Heart size={18} />
+            <Heart size={18} fill={isFavorited ? 'currentColor' : 'none'} />
           </button>
         </div>
         <div className="absolute top-4 left-4">
@@ -60,9 +74,11 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">
-              {apartment.block}-{apartment.number}
-            </h3>
+            <Link to={`/apartment/${apartment.id}`}>
+              <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors cursor-pointer">
+                {apartment.block}-{apartment.number}
+              </h3>
+            </Link>
             <div className="flex items-center text-sm text-gray-600">
               <MapPin size={14} className="mr-1" />
               Block {apartment.block}, Floor {apartment.floor}
@@ -103,16 +119,26 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
 
         <div className="flex space-x-2">
           <button 
-            onClick={() => onAddToCart(apartment.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              onAddToCart(apartment.id);
+            }}
             disabled={!apartment.available}
             className={`flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-colors ${
               apartment.available
-                ? 'bg-green-600 text-white hover:bg-green-700'
+                ? isInCart
+                  ? 'bg-orange-600 text-white hover:bg-orange-700'
+                  : 'bg-green-600 text-white hover:bg-green-700'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
             <ShoppingCart size={16} className="inline mr-2" />
-            {apartment.available ? 'Add to Cart' : 'Not Available'}
+            {!apartment.available 
+              ? 'Not Available' 
+              : isInCart 
+                ? 'Remove from Cart' 
+                : 'Add to Cart'
+            }
           </button>
         </div>
       </div>
@@ -121,3 +147,4 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({
 };
 
 export default ApartmentCard;
+

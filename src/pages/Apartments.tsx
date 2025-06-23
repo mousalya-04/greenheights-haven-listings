@@ -76,6 +76,7 @@ const Apartments = () => {
         ? prev.filter(fav => fav !== id)
         : [...prev, id]
     );
+    console.log('Favorites updated:', favorites.includes(id) ? 'Removed' : 'Added', id);
   };
 
   const handleAddToCart = (id: string) => {
@@ -84,6 +85,7 @@ const Apartments = () => {
         ? prev.filter(item => item !== id)
         : [...prev, id]
     );
+    console.log('Cart updated:', cart.includes(id) ? 'Removed' : 'Added', id);
   };
 
   const resetFilters = () => {
@@ -106,11 +108,21 @@ const Apartments = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Available Apartments
+            Available Apartments at MR Residencies
           </h1>
           <p className="text-lg text-gray-600">
             Find your perfect home from our collection of premium apartments across 5 modern blocks.
           </p>
+          
+          {/* Counters */}
+          <div className="flex space-x-6 mt-4 text-sm">
+            <div className="bg-red-100 text-red-800 px-3 py-1 rounded-full">
+              ❤️ Favorites: {favorites.length}
+            </div>
+            <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full">
+              🛒 Cart: {cart.length}
+            </div>
+          </div>
         </div>
 
         {/* Search and Filters */}
@@ -182,6 +194,7 @@ const Apartments = () => {
                   className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                 >
                   <option value="">Any</option>
+                  <option value="1">1 BHK</option>
                   <option value="2">2 BHK</option>
                   <option value="3">3 BHK</option>
                   <option value="4">4 BHK</option>
@@ -211,6 +224,8 @@ const Apartments = () => {
                   <option value="1">Ground Floor</option>
                   <option value="2">First Floor</option>
                   <option value="3">Second Floor</option>
+                  <option value="4">Third Floor</option>
+                  <option value="5">Fourth Floor</option>
                 </select>
               </div>
               <div>
@@ -265,6 +280,8 @@ const Apartments = () => {
               apartment={apartment}
               onAddToFavorites={handleAddToFavorites}
               onAddToCart={handleAddToCart}
+              isFavorited={favorites.includes(apartment.id)}
+              isInCart={cart.includes(apartment.id)}
             />
           ))}
         </div>

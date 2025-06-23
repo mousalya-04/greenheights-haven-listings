@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
@@ -46,7 +45,7 @@ const Contact = () => {
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Have questions about our apartments or want to schedule a visit? 
-            We're here to help you find your perfect home at GreenHeights Residency.
+            We're here to help you find your perfect home at MR Residencies.
           </p>
         </div>
 
@@ -64,8 +63,8 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
                   <p className="text-gray-600">
-                    GreenHeights Residency<br />
-                    Main Street, Coimbatore<br />
+                    MR Residencies<br />
+                    Main Avenue Road, Coimbatore<br />
                     Tamil Nadu – 641001
                   </p>
                 </div>
@@ -78,7 +77,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                  <p className="text-gray-600">+91-98765-43210</p>
+                  <p className="text-gray-600">+91 98765 43210</p>
                   <p className="text-sm text-gray-500">Available 24/7 for emergencies</p>
                 </div>
               </div>
@@ -90,7 +89,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-gray-600">support@greenheights.com</p>
+                  <p className="text-gray-600">support@mrresidencies.com</p>
                   <p className="text-sm text-gray-500">We respond within 24 hours</p>
                 </div>
               </div>
@@ -264,7 +263,7 @@ const Contact = () => {
                 <MapPin className="mx-auto text-gray-400 mb-4" size={48} />
                 <p className="text-gray-600">
                   Interactive map will be displayed here<br />
-                  GreenHeights Residency, Main Street, Coimbatore
+                  MR Residencies, Main Avenue Road, Coimbatore
                 </p>
               </div>
             </div>
