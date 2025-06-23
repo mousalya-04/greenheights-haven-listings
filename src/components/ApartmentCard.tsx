@@ -1,196 +1,163 @@
 
-import React, { useState, useEffect } from 'react';
-import { Heart, ShoppingCart, Star, MapPin } from 'lucide-react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Heart, ShoppingCart, MapPin, Users, Car, Wifi } from 'lucide-react';
 
-interface ApartmentCardProps {
+export interface ApartmentCardProps {
   apartment: {
     id: string;
     number: string;
     block: string;
     rent: number;
-    size: number;
+    yearlyRent: number;
     bedrooms: number;
     bathrooms: number;
     balconies: number;
     floor: number;
-    furnishing: 'Furnished' | 'Semi-furnished' | 'Unfurnished';
+    sqft: number;
     available: boolean;
+    description: string;
+    features: string[];
+    accessibility: string[];
     rating: number;
-    reviews: number;
-    image: string;
+    furnishing: string;
+    images: {
+      main: string;
+      kitchen: string;
+      livingRoom: string;
+      bathroom: string;
+      balcony: string;
+      bedroom: string;
+      diningArea: string;
+    };
   };
-  onAddToFavorites?: (id: string) => void;
-  onAddToCart?: (id: string) => void;
+  onAddToFavorites: (id: string) => void;
+  onAddToCart: (id: string) => void;
+  isFavorited: boolean;
+  isInCart: boolean;
 }
 
 const ApartmentCard: React.FC<ApartmentCardProps> = ({ 
   apartment, 
-  onAddToFavorites,
-  onAddToCart
+  onAddToFavorites, 
+  onAddToCart, 
+  isFavorited, 
+  isInCart 
 }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
-
-  useEffect(() => {
-    // Check if apartment is in favorites
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    setIsFavorited(favorites.includes(apartment.id));
-
-    // Check if apartment is in cart
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    setIsInCart(cart.includes(apartment.id));
-  }, [apartment.id]);
-
-  const handleAddToFavorites = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    
-    if (isFavorited) {
-      // Remove from favorites
-      const updatedFavorites = favorites.filter((id: string) => id !== apartment.id);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setIsFavorited(false);
-    } else {
-      // Add to favorites
-      const updatedFavorites = [...favorites, apartment.id];
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setIsFavorited(true);
-    }
-
-    // Trigger custom event to update navbar
-    window.dispatchEvent(new Event('favoritesUpdated'));
-    
-    if (onAddToFavorites) {
-      onAddToFavorites(apartment.id);
-    }
-  };
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    
-    if (isInCart) {
-      // Remove from cart
-      const updatedCart = cart.filter((id: string) => id !== apartment.id);
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-      setIsInCart(false);
-    } else {
-      // Add to cart
-      const updatedCart = [...cart, apartment.id];
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-      setIsInCart(true);
-    }
-
-    // Trigger custom event to update navbar
-    window.dispatchEvent(new Event('cartUpdated'));
-    
-    if (onAddToCart) {
-      onAddToCart(apartment.id);
-    }
-  };
-
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
       {/* Image */}
-      <div className="relative h-48">
-        <Link to={`/apartment/${apartment.id}`}>
-          <img 
-            src={apartment.image} 
-            alt={`Apartment ${apartment.number}`}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
-          />
-        </Link>
-        <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
-          <button 
-            onClick={handleAddToFavorites}
-            className={`transition-colors ${
-              isFavorited 
-                ? 'text-red-500' 
-                : 'text-gray-600 hover:text-red-500'
-            }`}
-          >
-            <Heart size={18} fill={isFavorited ? 'currentColor' : 'none'} />
-          </button>
-        </div>
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={apartment.images.main}
+          alt={`Apartment ${apartment.number}`}
+          className="w-full h-full object-cover"
+        />
         <div className="absolute top-4 left-4">
-          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+          <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
             apartment.available 
-              ? 'bg-green-100 text-green-800' 
-              : 'bg-red-100 text-red-800'
+              ? 'bg-green-500 text-white' 
+              : 'bg-red-500 text-white'
           }`}>
             {apartment.available ? 'Available' : 'Occupied'}
           </span>
         </div>
+        <div className="absolute top-4 right-4 flex space-x-2">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onAddToFavorites(apartment.id);
+            }}
+            className={`p-2 rounded-full transition-colors ${
+              isFavorited 
+                ? 'bg-red-500 text-white' 
+                : 'bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white'
+            }`}
+          >
+            <Heart size={20} fill={isFavorited ? 'currentColor' : 'none'} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onAddToCart(apartment.id);
+            }}
+            className={`p-2 rounded-full transition-colors ${
+              isInCart 
+                ? 'bg-blue-500 text-white' 
+                : 'bg-white/80 text-gray-600 hover:bg-blue-500 hover:text-white'
+            }`}
+          >
+            <ShoppingCart size={20} fill={isInCart ? 'currentColor' : 'none'} />
+          </button>
+        </div>
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <div className="flex justify-between items-start mb-2">
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-3">
           <div>
-            <Link to={`/apartment/${apartment.id}`}>
-              <h3 className="text-lg font-semibold text-gray-900 hover:text-purple-600 transition-colors cursor-pointer">
-                {apartment.block}-{apartment.number}
-              </h3>
-            </Link>
-            <div className="flex items-center text-sm text-gray-600">
-              <MapPin size={14} className="mr-1" />
+            <h3 className="text-xl font-bold text-gray-900 mb-1">
+              Apartment {apartment.number}
+            </h3>
+            <p className="text-gray-600 flex items-center">
+              <MapPin size={16} className="mr-1" />
               Block {apartment.block}, Floor {apartment.floor}
-            </div>
+            </p>
           </div>
           <div className="text-right">
-            <p className="text-2xl font-bold text-green-600">₹{apartment.rent.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-green-600">
+              ₹{apartment.rent.toLocaleString()}
+            </p>
             <p className="text-sm text-gray-500">per month</p>
           </div>
         </div>
 
-        <div className="flex items-center mb-3">
-          <div className="flex items-center">
-            <Star className="text-yellow-400 fill-current" size={16} />
-            <span className="ml-1 text-sm font-medium">{apartment.rating}</span>
-            <span className="ml-1 text-sm text-gray-500">({apartment.reviews} reviews)</span>
+        <p className="text-gray-600 mb-4 text-sm">{apartment.description}</p>
+
+        {/* Quick Info */}
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="flex items-center text-sm text-gray-600">
+            <Users size={16} className="mr-2 text-blue-500" />
+            {apartment.bedrooms} BR, {apartment.bathrooms} BA
+          </div>
+          <div className="flex items-center text-sm text-gray-600">
+            <Car size={16} className="mr-2 text-green-500" />
+            {apartment.sqft} sq ft
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-4">
-          <div>Size: {apartment.size} sq ft</div>
-          <div>{apartment.bedrooms} BHK</div>
-          <div>{apartment.bathrooms} Bathrooms</div>
-          <div>{apartment.balconies} Balcony</div>
+        {/* Features */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {apartment.features.slice(0, 2).map((feature, index) => (
+            <span key={index} className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
+              {feature}
+            </span>
+          ))}
+          {apartment.features.length > 2 && (
+            <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+              +{apartment.features.length - 2} more
+            </span>
+          )}
         </div>
 
-        <div className="mb-4">
-          <span className={`inline-block px-2 py-1 rounded-full text-xs ${
-            apartment.furnishing === 'Furnished' 
-              ? 'bg-blue-100 text-blue-800'
-              : apartment.furnishing === 'Semi-furnished'
-              ? 'bg-yellow-100 text-yellow-800'
-              : 'bg-gray-100 text-gray-800'
-          }`}>
-            {apartment.furnishing}
-          </span>
-        </div>
-
-        <div className="flex space-x-2">
-          <button 
-            onClick={handleAddToCart}
-            disabled={!apartment.available}
-            className={`flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-colors ${
-              apartment.available
-                ? isInCart
-                  ? 'bg-orange-600 text-white hover:bg-orange-700'
-                  : 'bg-green-600 text-white hover:bg-green-700'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            }`}
+        {/* Rating */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="flex text-yellow-400">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className={i < Math.floor(apartment.rating) ? "★" : "☆"}>
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className="ml-2 text-sm text-gray-600">({apartment.rating})</span>
+          </div>
+          <Link
+            to={`/apartment/${apartment.id}`}
+            className="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-pink-600 transition-colors font-semibold text-sm"
           >
-            <ShoppingCart size={16} className="inline mr-2" />
-            {!apartment.available 
-              ? 'Not Available' 
-              : isInCart 
-                ? 'Remove from Cart' 
-                : 'Add to Cart'
-            }
-          </button>
+            View Details
+          </Link>
         </div>
       </div>
     </div>
