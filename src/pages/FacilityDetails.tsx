@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, Users, Phone } from 'lucide-react';
@@ -24,7 +23,7 @@ const FacilityDetails = () => {
       ],
       images: [
         'https://images.unsplash.com/photo-1563453392212-326d32d2d6cb?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=600&h=400&fit=crop'
       ]
@@ -67,10 +66,10 @@ const FacilityDetails = () => {
         'Electric vehicle charging'
       ],
       images: [
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1593979755742-3c7a83fb6cba?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1590674899284-11bbd4ba6ce5?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1567449830102-be7c00f8c4b2?w=600&h=400&fit=crop'
       ]
     },
     'bus-stand': {
@@ -90,9 +89,9 @@ const FacilityDetails = () => {
       ],
       images: [
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop'
       ]
     },
     'transport': {
@@ -111,10 +110,10 @@ const FacilityDetails = () => {
         'Bicycle sharing'
       ],
       images: [
+        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop'
       ]
     },
     'hospital': {
@@ -365,10 +364,10 @@ const FacilityDetails = () => {
 
   if (!facility) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Facility Not Found</h1>
-          <Link to="/facilities" className="text-slate-600 hover:text-slate-700">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Facility Not Found</h1>
+          <Link to="/facilities" className="text-gray-600 hover:text-gray-700">
             ← Back to Facilities
           </Link>
         </div>
@@ -377,67 +376,67 @@ const FacilityDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <Link 
             to="/facilities" 
-            className="inline-flex items-center text-slate-600 hover:text-slate-700 mb-4 font-medium"
+            className="inline-flex items-center text-gray-600 hover:text-gray-700 mb-4 font-medium"
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to Facilities
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {facility.name}
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
             {facility.description}
           </p>
         </div>
 
         {/* Facility Info */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
             <div className="flex items-center mb-3">
-              <MapPin className="text-slate-600 mr-3" size={20} />
-              <h3 className="font-semibold text-slate-900">Location</h3>
+              <MapPin className="text-gray-600 mr-3" size={20} />
+              <h3 className="font-semibold text-gray-900">Location</h3>
             </div>
-            <p className="text-slate-600">{facility.location}</p>
+            <p className="text-gray-600">{facility.location}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
             <div className="flex items-center mb-3">
-              <Clock className="text-slate-600 mr-3" size={20} />
-              <h3 className="font-semibold text-slate-900">Timings</h3>
+              <Clock className="text-gray-600 mr-3" size={20} />
+              <h3 className="font-semibold text-gray-900">Timings</h3>
             </div>
-            <p className="text-slate-600">{facility.timings}</p>
+            <p className="text-gray-600">{facility.timings}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
             <div className="flex items-center mb-3">
-              <Users className="text-slate-600 mr-3" size={20} />
-              <h3 className="font-semibold text-slate-900">Capacity</h3>
+              <Users className="text-gray-600 mr-3" size={20} />
+              <h3 className="font-semibold text-gray-900">Capacity</h3>
             </div>
-            <p className="text-slate-600">{facility.capacity}</p>
+            <p className="text-gray-600">{facility.capacity}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
             <div className="flex items-center mb-3">
-              <Phone className="text-slate-600 mr-3" size={20} />
-              <h3 className="font-semibold text-slate-900">Contact</h3>
+              <Phone className="text-gray-600 mr-3" size={20} />
+              <h3 className="font-semibold text-gray-900">Contact</h3>
             </div>
-            <p className="text-slate-600">{facility.contact}</p>
+            <p className="text-gray-600">{facility.contact}</p>
           </div>
         </div>
 
         {/* Image Gallery */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">Gallery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {facility.images.map((image: string, index: number) => (
               <div key={index} className="aspect-w-4 aspect-h-3">
                 <img
                   src={image}
                   alt={`${facility.name} ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-slate-200"
+                  className="w-full h-64 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-200"
                 />
               </div>
             ))}
@@ -445,13 +444,13 @@ const FacilityDetails = () => {
         </div>
 
         {/* Features */}
-        <div className="bg-white rounded-2xl shadow-lg p-10 border border-slate-200">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">Features & Amenities</h2>
+        <div className="bg-white rounded-2xl shadow-lg p-10 border border-gray-200">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Features & Amenities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facility.features.map((feature: string, index: number) => (
               <div key={index} className="flex items-center">
-                <div className="w-2 h-2 bg-slate-600 rounded-full mr-4"></div>
-                <span className="text-slate-700 font-medium">{feature}</span>
+                <div className="w-2 h-2 bg-gray-600 rounded-full mr-4"></div>
+                <span className="text-gray-700 font-medium">{feature}</span>
               </div>
             ))}
           </div>

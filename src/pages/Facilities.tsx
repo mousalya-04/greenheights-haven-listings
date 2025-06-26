@@ -48,14 +48,14 @@ const Facilities = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             World-Class Facilities
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Experience premium lifestyle with our comprehensive range of amenities and services. 
             From essential utilities to luxury recreational facilities, we have everything you need for modern living.
           </p>
@@ -65,7 +65,7 @@ const Facilities = () => {
         <div className="space-y-16">
           {facilities.map((category, categoryIndex) => (
             <div key={categoryIndex}>
-              <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">
+              <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
                 {category.category}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -73,16 +73,16 @@ const Facilities = () => {
                   <Link
                     key={facilityIndex}
                     to={`/facility/${facility.id}`}
-                    className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 border border-slate-200"
+                    className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 border border-gray-200"
                   >
                     <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-slate-200 group-hover:to-slate-300 transition-all duration-300">
+                      <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-gray-200 group-hover:to-gray-300 transition-all duration-300">
                         <span className="text-4xl">{facility.icon}</span>
                       </div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
                         {facility.name}
                       </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed">
                         {facility.description}
                       </p>
                     </div>
@@ -94,7 +94,7 @@ const Facilities = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl text-white text-center py-16 mt-20 shadow-2xl">
+        <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl text-white text-center py-16 mt-20 shadow-2xl">
           <h2 className="text-4xl font-bold mb-6">Ready to Experience Premium Living?</h2>
           <p className="text-xl mb-10 max-w-2xl mx-auto opacity-90">
             Join our community and enjoy all these amazing facilities and more. 
@@ -103,13 +103,13 @@ const Facilities = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="/apartments" 
-              className="bg-white text-slate-800 px-10 py-4 rounded-xl font-semibold hover:bg-slate-100 transition-colors shadow-lg"
+              className="bg-white text-gray-800 px-10 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
             >
               Browse Apartments
             </a>
             <a 
               href="/contact" 
-              className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold hover:bg-white hover:text-slate-800 transition-colors"
+              className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-800 transition-colors"
             >
               Schedule a Visit
             </a>
