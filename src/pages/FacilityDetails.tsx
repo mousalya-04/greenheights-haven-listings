@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, Users, Phone } from 'lucide-react';
@@ -91,7 +92,7 @@ const FacilityDetails = () => {
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1593241620737-6d96b9e3a34e?w=600&h=400&fit=crop'
       ]
     },
     'transport': {
@@ -113,7 +114,7 @@ const FacilityDetails = () => {
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1467290562625-48d3e10098?w=600&h=400&fit=crop'
       ]
     },
     'hospital': {
@@ -364,10 +365,10 @@ const FacilityDetails = () => {
 
   if (!facility) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-stone-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Facility Not Found</h1>
-          <Link to="/facilities" className="text-gray-600 hover:text-gray-700">
+          <h1 className="text-2xl font-bold text-stone-900 mb-4">Facility Not Found</h1>
+          <Link to="/facilities" className="text-orange-600 hover:text-orange-700">
             ← Back to Facilities
           </Link>
         </div>
@@ -376,67 +377,67 @@ const FacilityDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-stone-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <Link 
             to="/facilities" 
-            className="inline-flex items-center text-gray-600 hover:text-gray-700 mb-4 font-medium"
+            className="inline-flex items-center text-orange-600 hover:text-orange-700 mb-4 font-medium"
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to Facilities
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
             {facility.name}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+          <p className="text-xl text-stone-600 max-w-3xl leading-relaxed">
             {facility.description}
           </p>
         </div>
 
         {/* Facility Info */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-orange-200">
             <div className="flex items-center mb-3">
-              <MapPin className="text-gray-600 mr-3" size={20} />
-              <h3 className="font-semibold text-gray-900">Location</h3>
+              <MapPin className="text-orange-600 mr-3" size={20} />
+              <h3 className="font-semibold text-stone-900">Location</h3>
             </div>
-            <p className="text-gray-600">{facility.location}</p>
+            <p className="text-stone-600">{facility.location}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-orange-200">
             <div className="flex items-center mb-3">
-              <Clock className="text-gray-600 mr-3" size={20} />
-              <h3 className="font-semibold text-gray-900">Timings</h3>
+              <Clock className="text-orange-600 mr-3" size={20} />
+              <h3 className="font-semibold text-stone-900">Timings</h3>
             </div>
-            <p className="text-gray-600">{facility.timings}</p>
+            <p className="text-stone-600">{facility.timings}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-orange-200">
             <div className="flex items-center mb-3">
-              <Users className="text-gray-600 mr-3" size={20} />
-              <h3 className="font-semibold text-gray-900">Capacity</h3>
+              <Users className="text-orange-600 mr-3" size={20} />
+              <h3 className="font-semibold text-stone-900">Capacity</h3>
             </div>
-            <p className="text-gray-600">{facility.capacity}</p>
+            <p className="text-stone-600">{facility.capacity}</p>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-orange-200">
             <div className="flex items-center mb-3">
-              <Phone className="text-gray-600 mr-3" size={20} />
-              <h3 className="font-semibold text-gray-900">Contact</h3>
+              <Phone className="text-orange-600 mr-3" size={20} />
+              <h3 className="font-semibold text-stone-900">Contact</h3>
             </div>
-            <p className="text-gray-600">{facility.contact}</p>
+            <p className="text-stone-600">{facility.contact}</p>
           </div>
         </div>
 
         {/* Image Gallery */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Gallery</h2>
+          <h2 className="text-3xl font-bold text-stone-900 mb-8">Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {facility.images.map((image: string, index: number) => (
               <div key={index} className="aspect-w-4 aspect-h-3">
                 <img
                   src={image}
                   alt={`${facility.name} ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-200"
+                  className="w-full h-64 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-orange-200"
                 />
               </div>
             ))}
@@ -444,13 +445,13 @@ const FacilityDetails = () => {
         </div>
 
         {/* Features */}
-        <div className="bg-white rounded-2xl shadow-lg p-10 border border-gray-200">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Features & Amenities</h2>
+        <div className="bg-white rounded-2xl shadow-lg p-10 border border-orange-200">
+          <h2 className="text-3xl font-bold text-stone-900 mb-8">Features & Amenities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facility.features.map((feature: string, index: number) => (
               <div key={index} className="flex items-center">
-                <div className="w-2 h-2 bg-gray-600 rounded-full mr-4"></div>
-                <span className="text-gray-700 font-medium">{feature}</span>
+                <div className="w-2 h-2 bg-orange-600 rounded-full mr-4"></div>
+                <span className="text-stone-700 font-medium">{feature}</span>
               </div>
             ))}
           </div>
