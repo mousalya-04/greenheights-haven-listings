@@ -68,9 +68,9 @@ const FacilityDetails = () => {
       ],
       images: [
         'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1593979755742-3c7a83fb6cba?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1593979755742-3c7a83fb6cba?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop'
       ]
     },
     'bus-stand': {
@@ -91,8 +91,8 @@ const FacilityDetails = () => {
       images: [
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop'
       ]
     },
     'transport': {
@@ -111,10 +111,10 @@ const FacilityDetails = () => {
         'Bicycle sharing'
       ],
       images: [
-        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1467290562625-48d3b3e10098?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop'
       ]
     },
     'hospital': {
@@ -157,8 +157,8 @@ const FacilityDetails = () => {
       images: [
         'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=600&h=400&fit=crop'
       ]
     },
     'academy': {
@@ -177,10 +177,10 @@ const FacilityDetails = () => {
         'Transportation facility'
       ],
       images: [
-        'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop'
       ]
     },
     'restaurant': {
@@ -245,8 +245,8 @@ const FacilityDetails = () => {
       images: [
         'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop'
       ]
     },
     'gym': {
@@ -331,10 +331,10 @@ const FacilityDetails = () => {
         'Rest areas with benches'
       ],
       images: [
-        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop'
       ]
     },
     'theatre': {
@@ -365,10 +365,10 @@ const FacilityDetails = () => {
 
   if (!facility) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Facility Not Found</h1>
-          <Link to="/facilities" className="text-purple-600 hover:text-purple-700">
+          <h1 className="text-2xl font-bold text-slate-900 mb-4">Facility Not Found</h1>
+          <Link to="/facilities" className="text-slate-600 hover:text-slate-700">
             ← Back to Facilities
           </Link>
         </div>
@@ -377,67 +377,67 @@ const FacilityDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <Link 
             to="/facilities" 
-            className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-4"
+            className="inline-flex items-center text-slate-600 hover:text-slate-700 mb-4 font-medium"
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to Facilities
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             {facility.name}
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-xl text-slate-600 max-w-3xl leading-relaxed">
             {facility.description}
           </p>
         </div>
 
         {/* Facility Info */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center mb-2">
-              <MapPin className="text-purple-600 mr-2" size={20} />
-              <h3 className="font-semibold">Location</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+            <div className="flex items-center mb-3">
+              <MapPin className="text-slate-600 mr-3" size={20} />
+              <h3 className="font-semibold text-slate-900">Location</h3>
             </div>
-            <p className="text-gray-600">{facility.location}</p>
+            <p className="text-slate-600">{facility.location}</p>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center mb-2">
-              <Clock className="text-purple-600 mr-2" size={20} />
-              <h3 className="font-semibold">Timings</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+            <div className="flex items-center mb-3">
+              <Clock className="text-slate-600 mr-3" size={20} />
+              <h3 className="font-semibold text-slate-900">Timings</h3>
             </div>
-            <p className="text-gray-600">{facility.timings}</p>
+            <p className="text-slate-600">{facility.timings}</p>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center mb-2">
-              <Users className="text-purple-600 mr-2" size={20} />
-              <h3 className="font-semibold">Capacity</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+            <div className="flex items-center mb-3">
+              <Users className="text-slate-600 mr-3" size={20} />
+              <h3 className="font-semibold text-slate-900">Capacity</h3>
             </div>
-            <p className="text-gray-600">{facility.capacity}</p>
+            <p className="text-slate-600">{facility.capacity}</p>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center mb-2">
-              <Phone className="text-purple-600 mr-2" size={20} />
-              <h3 className="font-semibold">Contact</h3>
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+            <div className="flex items-center mb-3">
+              <Phone className="text-slate-600 mr-3" size={20} />
+              <h3 className="font-semibold text-slate-900">Contact</h3>
             </div>
-            <p className="text-gray-600">{facility.contact}</p>
+            <p className="text-slate-600">{facility.contact}</p>
           </div>
         </div>
 
         {/* Image Gallery */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-slate-900 mb-8">Gallery</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {facility.images.map((image: string, index: number) => (
               <div key={index} className="aspect-w-4 aspect-h-3">
                 <img
                   src={image}
                   alt={`${facility.name} ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                  className="w-full h-64 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-slate-200"
                 />
               </div>
             ))}
@@ -445,13 +445,13 @@ const FacilityDetails = () => {
         </div>
 
         {/* Features */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Features & Amenities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="bg-white rounded-2xl shadow-lg p-10 border border-slate-200">
+          <h2 className="text-3xl font-bold text-slate-900 mb-8">Features & Amenities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facility.features.map((feature: string, index: number) => (
               <div key={index} className="flex items-center">
-                <div className="w-2 h-2 bg-purple-600 rounded-full mr-3"></div>
-                <span className="text-gray-700">{feature}</span>
+                <div className="w-2 h-2 bg-slate-600 rounded-full mr-4"></div>
+                <span className="text-slate-700 font-medium">{feature}</span>
               </div>
             ))}
           </div>

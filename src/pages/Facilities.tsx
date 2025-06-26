@@ -48,41 +48,41 @@ const Facilities = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             World-Class Facilities
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Enjoy premium amenities and services designed to enhance your living experience. 
-            From essential services to recreational facilities, we have everything you need.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Experience premium lifestyle with our comprehensive range of amenities and services. 
+            From essential utilities to luxury recreational facilities, we have everything you need for modern living.
           </p>
         </div>
 
         {/* Facilities Grid */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           {facilities.map((category, categoryIndex) => (
             <div key={categoryIndex}>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">
                 {category.category}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {category.items.map((facility, facilityIndex) => (
                   <Link
                     key={facilityIndex}
                     to={`/facility/${facility.id}`}
-                    className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer transform hover:scale-105 duration-200"
+                    className="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 border border-slate-200"
                   >
-                    <div className="text-center mb-4">
-                      <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-3xl">{facility.icon}</span>
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-slate-200 group-hover:to-slate-300 transition-all duration-300">
+                        <span className="text-4xl">{facility.icon}</span>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">
                         {facility.name}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-slate-600 text-sm leading-relaxed">
                         {facility.description}
                       </p>
                     </div>
@@ -94,22 +94,22 @@ const Facilities = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg text-white text-center py-16 mt-16">
-          <h2 className="text-3xl font-bold mb-4">Ready to Experience Premium Living?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl text-white text-center py-16 mt-20 shadow-2xl">
+          <h2 className="text-4xl font-bold mb-6">Ready to Experience Premium Living?</h2>
+          <p className="text-xl mb-10 max-w-2xl mx-auto opacity-90">
             Join our community and enjoy all these amazing facilities and more. 
             Your perfect home is just a click away.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="/apartments" 
-              className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-slate-800 px-10 py-4 rounded-xl font-semibold hover:bg-slate-100 transition-colors shadow-lg"
             >
               Browse Apartments
             </a>
             <a 
               href="/contact" 
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors"
+              className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold hover:bg-white hover:text-slate-800 transition-colors"
             >
               Schedule a Visit
             </a>
