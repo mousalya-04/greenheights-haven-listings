@@ -553,3 +553,41 @@ export const apartments: Apartment[] = [
     }
   }
 ];
+
+export const blockFeatures = {
+  A: {
+    name: 'Block A - Heritage Gardens',
+    description: 'Premium residential block with modern amenities and lush green surroundings.',
+    amenities: ['Swimming Pool', 'Gym', 'Garden', 'Security', 'Parking'],
+    color: 'from-amber-600 to-orange-700',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=500&fit=crop'
+  },
+  B: {
+    name: 'Block B - Urban Elegance',
+    description: 'Contemporary living spaces with city views and premium facilities.',
+    amenities: ['Rooftop Terrace', 'Fitness Center', 'Concierge', 'Security', 'Parking'],
+    color: 'from-blue-600 to-indigo-700',
+    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=500&fit=crop'
+  },
+  C: {
+    name: 'Block C - Luxury Heights',
+    description: 'High-end apartments with panoramic views and exclusive amenities.',
+    amenities: ['Infinity Pool', 'Sky Lounge', 'Valet Service', 'Security', 'Premium Parking'],
+    color: 'from-purple-600 to-pink-700',
+    image: 'https://images.unsplash.com/photo-1502005229762-cf1b2da60e6f?w=800&h=500&fit=crop'
+  },
+  D: {
+    name: 'Block D - Family Haven',
+    description: 'Family-friendly community with spacious layouts and children-focused amenities.',
+    amenities: ['Playground', 'Community Center', 'Kids Pool', 'Security', 'Family Parking'],
+    color: 'from-green-600 to-emerald-700',
+    image: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&h=500&fit=crop'
+  },
+  E: {
+    name: 'Block E - Executive Residences',
+    description: 'Sophisticated living for professionals with business-class amenities.',
+    amenities: ['Business Center', 'Executive Lounge', 'High-Speed Internet', 'Security', 'Executive Parking'],
+    color: 'from-gray-600 to-slate-700',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop'
+  }
+};
