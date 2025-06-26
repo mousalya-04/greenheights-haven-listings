@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,55 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Modern Comfort Theme Colors
+				emerald: {
+					50: '#ecfdf5',
+					100: '#d1fae5',
+					200: '#a7f3d0',
+					300: '#6ee7b7',
+					400: '#34d399',
+					500: '#10b981',
+					600: '#27ae60',
+					700: '#047857',
+					800: '#065f46',
+					900: '#064e3b',
+				},
+				coral: {
+					50: '#fff7ed',
+					100: '#ffedd5',
+					200: '#fed7aa',
+					300: '#fdba74',
+					400: '#ff7f50',
+					500: '#f97316',
+					600: '#ea580c',
+					700: '#c2410c',
+					800: '#9a3412',
+					900: '#7c2d12',
+				},
+				cream: {
+					50: '#fdfaf6',
+					100: '#f8f3ef',
+					200: '#f1e8e0',
+					300: '#e8ddd2',
+					400: '#ddd2c4',
+					500: '#d2c7b6',
+					600: '#c7bca8',
+					700: '#bcb19a',
+					800: '#b1a68c',
+					900: '#a69b7e',
+				},
+				charcoal: {
+					50: '#f8fafc',
+					100: '#f1f5f9',
+					200: '#e2e8f0',
+					300: '#cbd5e1',
+					400: '#94a3b8',
+					500: '#64748b',
+					600: '#475569',
+					700: '#334155',
+					800: '#2c3e50',
+					900: '#0f172a',
 				}
 			},
 			borderRadius: {
