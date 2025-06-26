@@ -1,4 +1,5 @@
 
+
 export interface Apartment {
   id: string;
   block: string;
@@ -10,6 +11,7 @@ export interface Apartment {
   balconies: number;
   sqft: number;
   rent: number;
+  yearlyRent: number;
   furnishing: string;
   available: boolean;
   rating: number;
@@ -36,3 +38,4 @@ export interface BlockFeature {
   color: string;
   image: string;
 }
+
