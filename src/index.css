@@ -3,87 +3,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Comfort Theme - Emerald Green, Coral/Peach & Cream */
+/* Modern Grey Theme - Sophisticated and Professional */
 
 @layer base {
   :root {
-    --background: 253 250 246;
-    --foreground: 44 62 80;
+    --background: 248 250 252;
+    --foreground: 15 23 42;
 
     --card: 255 255 255;
-    --card-foreground: 44 62 80;
+    --card-foreground: 15 23 42;
 
     --popover: 255 255 255;
-    --popover-foreground: 44 62 80;
+    --popover-foreground: 15 23 42;
 
-    --primary: 39 174 96;
-    --primary-foreground: 255 255 255;
+    --primary: 71 85 105;
+    --primary-foreground: 248 250 252;
 
-    --secondary: 52 152 219;
-    --secondary-foreground: 255 255 255;
+    --secondary: 100 116 139;
+    --secondary-foreground: 248 250 252;
 
-    --muted: 248 243 239;
-    --muted-foreground: 127 140 141;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
 
-    --accent: 255 127 80;
-    --accent-foreground: 255 255 255;
+    --accent: 148 163 184;
+    --accent-foreground: 15 23 42;
 
-    --destructive: 231 76 60;
-    --destructive-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
 
-    --border: 236 240 241;
-    --input: 236 240 241;
-    --ring: 39 174 96;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 71 85 105;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 253 250 246;
-    --sidebar-foreground: 127 140 141;
-    --sidebar-primary: 39 174 96;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 248 243 239;
-    --sidebar-accent-foreground: 127 140 141;
-    --sidebar-border: 236 240 241;
-    --sidebar-ring: 39 174 96;
+    --sidebar-background: 248 250 252;
+    --sidebar-foreground: 100 116 139;
+    --sidebar-primary: 71 85 105;
+    --sidebar-primary-foreground: 248 250 252;
+    --sidebar-accent: 241 245 249;
+    --sidebar-accent-foreground: 100 116 139;
+    --sidebar-border: 226 232 240;
+    --sidebar-ring: 71 85 105;
   }
 
   .dark {
-    --background: 44 62 80;
-    --foreground: 253 250 246;
+    --background: 15 23 42;
+    --foreground: 248 250 252;
 
-    --card: 52 73 94;
-    --card-foreground: 253 250 246;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
 
-    --popover: 52 73 94;
-    --popover-foreground: 253 250 246;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
 
-    --primary: 46 204 113;
-    --primary-foreground: 44 62 80;
+    --primary: 148 163 184;
+    --primary-foreground: 15 23 42;
 
-    --secondary: 74 144 226;
-    --secondary-foreground: 255 255 255;
+    --secondary: 100 116 139;
+    --secondary-foreground: 248 250 252;
 
-    --muted: 52 73 94;
-    --muted-foreground: 149 165 166;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
 
-    --accent: 230 126 34;
-    --accent-foreground: 255 255 255;
+    --accent: 71 85 105;
+    --accent-foreground: 248 250 252;
 
-    --destructive: 231 76 60;
-    --destructive-foreground: 253 250 246;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
 
-    --border: 52 73 94;
-    --input: 52 73 94;
-    --ring: 46 204 113;
+    --border: 30 41 59;
+    --input: 30 41 59;
+    --ring: 148 163 184;
 
-    --sidebar-background: 44 62 80;
-    --sidebar-foreground: 253 250 246;
-    --sidebar-primary: 149 165 166;
-    --sidebar-primary-foreground: 44 62 80;
-    --sidebar-accent: 52 73 94;
-    --sidebar-accent-foreground: 253 250 246;
-    --sidebar-border: 52 73 94;
-    --sidebar-ring: 46 204 113;
+    --sidebar-background: 15 23 42;
+    --sidebar-foreground: 248 250 252;
+    --sidebar-primary: 148 163 184;
+    --sidebar-primary-foreground: 15 23 42;
+    --sidebar-accent: 30 41 59;
+    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-border: 30 41 59;
+    --sidebar-ring: 148 163 184;
   }
 }
 
@@ -95,7 +95,7 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background: linear-gradient(135deg, #fdfaf6 0%, #f8f3ef 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -103,38 +103,38 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent;
   }
 
   .modern-shadow {
-    box-shadow: 0 4px 6px -1px rgba(39, 174, 96, 0.1), 0 2px 4px -1px rgba(39, 174, 96, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(71, 85, 105, 0.1), 0 2px 4px -1px rgba(71, 85, 105, 0.06);
   }
 
   .modern-shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(39, 174, 96, 0.1), 0 4px 6px -2px rgba(39, 174, 96, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(71, 85, 105, 0.1), 0 4px 6px -2px rgba(71, 85, 105, 0.05);
   }
 }
 
-/* Modern Comfort Button Styles */
+/* Modern Grey Button Styles */
 .btn-modern {
   @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 .btn-primary {
-  @apply btn-modern bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-600;
+  @apply btn-modern bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-600;
 }
 
 .btn-secondary {
-  @apply btn-modern bg-coral-100 text-coral-900 hover:bg-coral-200 focus:ring-coral-500;
+  @apply btn-modern bg-slate-100 text-slate-900 hover:bg-slate-200 focus:ring-slate-500;
 }
 
 .btn-outline {
-  @apply btn-modern border-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50 focus:ring-emerald-500;
+  @apply btn-modern border-2 border-slate-300 text-slate-700 hover:bg-slate-50 focus:ring-slate-500;
 }
 
-/* Modern Comfort Card Styles */
+/* Modern Grey Card Styles */
 .card-modern {
-  @apply bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300;
+  @apply bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300;
 }
 
 .card-modern-dark {
@@ -172,7 +172,7 @@
   }
 }
 
-/* Modern Comfort Spacing */
+/* Modern Grey Spacing */
 .section-padding {
   @apply py-16 px-4 sm:px-6 lg:px-8;
 }
@@ -181,7 +181,7 @@
   @apply max-w-7xl mx-auto;
 }
 
-/* Modern Comfort Typography */
+/* Modern Grey Typography */
 .text-modern-heading {
   @apply text-4xl md:text-5xl font-bold text-slate-900 leading-tight;
 }
@@ -194,76 +194,76 @@
   @apply text-base text-slate-600 leading-relaxed;
 }
 
-/* Modern Comfort Gradients */
+/* Modern Grey Gradients */
 .gradient-modern {
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 50%, #3498db 100%);
+  background: linear-gradient(135deg, #475569 0%, #64748b 50%, #94a3b8 100%);
 }
 
 .gradient-modern-subtle {
-  background: linear-gradient(135deg, #fdfaf6 0%, #f8f3ef 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 }
 
-.gradient-emerald {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+.gradient-slate {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
 }
 
-.gradient-coral {
-  background: linear-gradient(135deg, #ff7f50 0%, #ff6347 100%);
+.gradient-stone {
+  background: linear-gradient(135deg, #78716c 0%, #57534e 100%);
 }
 
-/* Custom color utilities for the new theme */
-.bg-emerald-primary {
-  background-color: #27ae60;
+/* Custom color utilities for the grey theme */
+.bg-slate-primary {
+  background-color: #475569;
 }
 
-.bg-coral-accent {
-  background-color: #ff7f50;
+.bg-stone-accent {
+  background-color: #78716c;
 }
 
-.bg-sky-secondary {
-  background-color: #3498db;
+.bg-zinc-secondary {
+  background-color: #71717a;
 }
 
-.bg-cream-background {
-  background-color: #fdfaf6;
+.bg-grey-background {
+  background-color: #f8fafc;
 }
 
-.text-charcoal {
-  color: #2c3e50;
+.text-slate-primary {
+  color: #475569;
 }
 
-/* Enhanced card styles for the new theme */
-.modern-comfort-card {
-  @apply bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300;
-  box-shadow: 0 4px 6px -1px rgba(39, 174, 96, 0.1), 0 2px 4px -1px rgba(39, 174, 96, 0.06);
+/* Enhanced card styles for the grey theme */
+.modern-grey-card {
+  @apply bg-white rounded-2xl border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300;
+  box-shadow: 0 4px 6px -1px rgba(71, 85, 105, 0.1), 0 2px 4px -1px rgba(71, 85, 105, 0.06);
 }
 
-.modern-comfort-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(39, 174, 96, 0.15), 0 4px 6px -2px rgba(39, 174, 96, 0.1);
+.modern-grey-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(71, 85, 105, 0.15), 0 4px 6px -2px rgba(71, 85, 105, 0.1);
 }
 
-/* Button variants for the new theme */
-.btn-emerald {
-  @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+/* Button variants for the grey theme */
+.btn-slate {
+  @apply bg-slate-600 hover:bg-slate-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
 }
 
-.btn-coral {
-  @apply bg-orange-400 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+.btn-stone {
+  @apply bg-stone-600 hover:bg-stone-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
 }
 
-.btn-sky {
-  @apply bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+.btn-zinc {
+  @apply bg-zinc-600 hover:bg-zinc-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
 }
 
 /* Text color utilities */
-.text-emerald-primary {
-  color: #27ae60;
+.text-slate-primary {
+  color: #475569;
 }
 
-.text-coral-accent {
-  color: #ff7f50;
+.text-stone-accent {
+  color: #78716c;
 }
 
-.text-sky-secondary {
-  color: #3498db;
+.text-zinc-secondary {
+  color: #71717a;
 }
