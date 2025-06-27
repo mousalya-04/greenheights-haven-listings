@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingCart, Menu, X, User, Building2 } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, User, Crown, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,22 +54,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 shadow-2xl border-b border-gray-700">
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-black via-gray-900 to-pink-900 shadow-2xl border-b border-pink-500/20 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/home" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-slate-400 via-gray-300 to-slate-500 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300">
-                <Building2 className="text-gray-900" size={24} />
+              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 via-pink-600 to-pink-700 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-all duration-300 neon-border">
+                <Crown className="text-white" size={24} />
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full shadow-md"></div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full shadow-md animate-pulse"></div>
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent">
+              <h1 className="text-xl font-playfair font-bold gradient-text neon-pink">
                 MR Residencies
               </h1>
-              <p className="text-xs text-slate-400 font-medium tracking-wide">Luxury Living Redefined</p>
+              <p className="text-xs text-pink-300 font-poppins font-medium tracking-wide">✨ Luxury Redefined ✨</p>
             </div>
           </Link>
 
@@ -78,53 +78,53 @@ const Navbar = () => {
             <form onSubmit={handleSearch} className="w-full relative">
               <input
                 type="text"
-                placeholder="Search apartments, blocks, facilities..."
+                placeholder="Search luxury apartments..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 pl-10 rounded-xl border-0 bg-gray-800/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-slate-400 focus:outline-none backdrop-blur-sm"
+                className="w-full px-4 py-3 pl-12 rounded-2xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
             </form>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/home" 
-              className={`text-sm font-medium transition-all duration-200 ${
-                isActive('/home') ? 'text-slate-200 border-b-2 border-slate-300' : 'text-gray-300 hover:text-white'
+              className={`text-sm font-poppins font-medium transition-all duration-300 ${
+                isActive('/home') ? 'text-pink-400 border-b-2 border-pink-400 neon-pink' : 'text-gray-300 hover:text-pink-300'
               }`}
             >
               Home
             </Link>
             <Link 
               to="/apartments" 
-              className={`text-sm font-medium transition-all duration-200 ${
-                isActive('/apartments') ? 'text-slate-200 border-b-2 border-slate-300' : 'text-gray-300 hover:text-white'
+              className={`text-sm font-poppins font-medium transition-all duration-300 ${
+                isActive('/apartments') ? 'text-pink-400 border-b-2 border-pink-400 neon-pink' : 'text-gray-300 hover:text-pink-300'
               }`}
             >
               Apartments
             </Link>
             <Link 
               to="/facilities" 
-              className={`text-sm font-medium transition-all duration-200 ${
-                isActive('/facilities') ? 'text-slate-200 border-b-2 border-slate-300' : 'text-gray-300 hover:text-white'
+              className={`text-sm font-poppins font-medium transition-all duration-300 ${
+                isActive('/facilities') ? 'text-pink-400 border-b-2 border-pink-400 neon-pink' : 'text-gray-300 hover:text-pink-300'
               }`}
             >
               Facilities
             </Link>
             <Link 
               to="/reviews" 
-              className={`text-sm font-medium transition-all duration-200 ${
-                isActive('/reviews') ? 'text-slate-200 border-b-2 border-slate-300' : 'text-gray-300 hover:text-white'
+              className={`text-sm font-poppins font-medium transition-all duration-300 ${
+                isActive('/reviews') ? 'text-pink-400 border-b-2 border-pink-400 neon-pink' : 'text-gray-300 hover:text-pink-300'
               }`}
             >
               Reviews
             </Link>
             <Link 
               to="/contact" 
-              className={`text-sm font-medium transition-all duration-200 ${
-                isActive('/contact') ? 'text-slate-200 border-b-2 border-slate-300' : 'text-gray-300 hover:text-white'
+              className={`text-sm font-poppins font-medium transition-all duration-300 ${
+                isActive('/contact') ? 'text-pink-400 border-b-2 border-pink-400 neon-pink' : 'text-gray-300 hover:text-pink-300'
               }`}
             >
               Contact
@@ -132,40 +132,40 @@ const Navbar = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             <Link 
               to="/favorites" 
-              className="p-2 text-gray-300 hover:text-white transition-colors relative"
+              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
             >
               <Heart size={20} />
               {favoritesCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-pink">
                   {favoritesCount}
                 </span>
               )}
             </Link>
             <Link 
               to="/cart" 
-              className="p-2 text-gray-300 hover:text-white transition-colors relative"
+              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
             >
               <ShoppingCart size={20} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-slate-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-pink">
                   {cartCount}
                 </span>
               )}
             </Link>
             <Link 
               to="/login" 
-              className="flex items-center space-x-1 bg-gradient-to-r from-slate-600 to-gray-700 text-white px-4 py-2 rounded-xl hover:from-slate-500 hover:to-gray-600 transition-all shadow-lg"
+              className="flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 py-3 rounded-2xl hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg transform hover:scale-105 neon-border"
             >
               <User size={18} />
-              <span className="text-sm font-medium">Login</span>
+              <span className="text-sm font-poppins font-medium">Login</span>
             </Link>
 
             {/* Mobile menu button */}
             <button 
-              className="md:hidden p-2 text-gray-300"
+              className="md:hidden p-3 text-gray-300 hover:text-pink-400 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -174,54 +174,54 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Search */}
-        <div className="md:hidden pb-3">
+        <div className="md:hidden pb-4">
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
-              placeholder="Search apartments..."
+              placeholder="Search luxury apartments..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 pl-10 rounded-xl border-0 bg-gray-800/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-slate-400 focus:outline-none backdrop-blur-sm"
+              className="w-full px-4 py-3 pl-12 rounded-2xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
             />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
           </form>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-700 bg-gray-800/90 backdrop-blur-sm">
+          <div className="md:hidden border-t border-pink-500/20 glass-effect">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
                 to="/home" 
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/apartments" 
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apartments
               </Link>
               <Link 
                 to="/facilities" 
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Facilities
               </Link>
               <Link 
                 to="/reviews" 
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reviews
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact

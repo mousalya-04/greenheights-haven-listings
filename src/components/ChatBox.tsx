@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, User, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, User, Bot, Sparkles } from 'lucide-react';
 
 interface Message {
   id: number;
@@ -105,34 +105,37 @@ const ChatBox = () => {
       {/* Chat Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full shadow-2xl transition-all duration-300 ${
           isOpen 
             ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
-            : 'bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-500 hover:to-gray-600'
-        } flex items-center justify-center group`}
+            : 'bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 hover:from-pink-600 hover:to-pink-800'
+        } flex items-center justify-center group animate-pulse-pink`}
       >
         {isOpen ? (
-          <X size={24} className="text-white" />
+          <X size={28} className="text-white" />
         ) : (
-          <MessageCircle size={24} className="text-white group-hover:scale-110 transition-transform" />
+          <div className="relative">
+            <MessageCircle size={28} className="text-white group-hover:scale-110 transition-transform" />
+            <Sparkles size={12} className="absolute -top-1 -right-1 text-yellow-300 animate-pulse" />
+          </div>
         )}
         {!isOpen && (
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
+          <div className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse shadow-lg"></div>
         )}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 h-96 bg-gray-900/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700 flex flex-col">
+        <div className="fixed bottom-24 right-6 z-50 w-80 h-96 glass-effect rounded-3xl shadow-2xl border border-pink-500/30 flex flex-col">
           {/* Header */}
-          <div className="bg-gradient-to-r from-slate-600 to-gray-700 p-4 rounded-t-2xl">
+          <div className="bg-gradient-to-r from-pink-500 to-pink-600 p-4 rounded-t-3xl">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <Bot size={16} className="text-gray-800" />
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <Bot size={20} className="text-pink-600" />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-sm">MR Assistant</h3>
-                <p className="text-slate-200 text-xs">Online • Ready to help</p>
+                <h3 className="text-white font-playfair font-semibold">MR Assistant</h3>
+                <p className="text-pink-100 text-xs font-poppins">✨ Online • Ready to help ✨</p>
               </div>
             </div>
           </div>
@@ -145,25 +148,25 @@ const ChatBox = () => {
                 className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
               >
                 <div className={`flex items-start space-x-2 max-w-[80%] ${message.isBot ? '' : 'flex-row-reverse space-x-reverse'}`}>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     message.isBot 
-                      ? 'bg-gradient-to-br from-slate-500 to-gray-600' 
-                      : 'bg-gradient-to-br from-blue-500 to-blue-600'
+                      ? 'bg-gradient-to-br from-pink-500 to-pink-600' 
+                      : 'bg-gradient-to-br from-gray-600 to-gray-700'
                   }`}>
                     {message.isBot ? (
-                      <Bot size={12} className="text-white" />
+                      <Bot size={14} className="text-white" />
                     ) : (
-                      <User size={12} className="text-white" />
+                      <User size={14} className="text-white" />
                     )}
                   </div>
                   <div className={`p-3 rounded-2xl ${
                     message.isBot 
-                      ? 'bg-gray-800 text-gray-100' 
-                      : 'bg-gradient-to-br from-blue-600 to-blue-700 text-white'
+                      ? 'bg-gray-800/70 text-gray-100 backdrop-blur-sm' 
+                      : 'bg-gradient-to-br from-pink-500 to-pink-600 text-white'
                   }`}>
-                    <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-                    <p className={`text-xs mt-1 ${
-                      message.isBot ? 'text-gray-400' : 'text-blue-100'
+                    <p className="text-sm whitespace-pre-wrap font-poppins">{message.text}</p>
+                    <p className={`text-xs mt-1 font-inter ${
+                      message.isBot ? 'text-gray-400' : 'text-pink-100'
                     }`}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
@@ -176,14 +179,14 @@ const ChatBox = () => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start space-x-2">
-                  <div className="w-6 h-6 bg-gradient-to-br from-slate-500 to-gray-600 rounded-full flex items-center justify-center">
-                    <Bot size={12} className="text-white" />
+                  <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center">
+                    <Bot size={14} className="text-white" />
                   </div>
-                  <div className="bg-gray-800 p-3 rounded-2xl">
+                  <div className="bg-gray-800/70 backdrop-blur-sm p-3 rounded-2xl">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </div>
@@ -193,22 +196,22 @@ const ChatBox = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-gray-700">
-            <div className="flex space-x-2">
+          <div className="p-4 border-t border-pink-500/30">
+            <div className="flex space-x-3">
               <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 px-3 py-2 bg-gray-800 text-white rounded-xl border border-gray-600 focus:ring-2 focus:ring-slate-500 focus:border-transparent text-sm placeholder-gray-400"
+                className="flex-1 px-4 py-3 bg-gray-800/70 text-white rounded-2xl border border-pink-500/30 focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm placeholder-gray-400 backdrop-blur-sm font-poppins"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim()}
-                className="w-10 h-10 bg-gradient-to-r from-slate-600 to-gray-700 hover:from-slate-500 hover:to-gray-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center transition-all"
+                className="w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl flex items-center justify-center transition-all shadow-lg transform hover:scale-105"
               >
-                <Send size={16} className="text-white" />
+                <Send size={18} className="text-white" />
               </button>
             </div>
           </div>
