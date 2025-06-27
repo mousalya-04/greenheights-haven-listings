@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Star, User } from 'lucide-react';
 
@@ -112,57 +111,57 @@ const Reviews = () => {
       <Star
         key={index}
         size={16}
-        className={index < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+        className={index < rating ? 'text-yellow-400 fill-current' : 'text-gray-500'}
       />
     ));
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent mb-4">
             Resident Reviews
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from our happy residents about their experience living at GreenHeights Residency. 
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Hear from our happy residents about their experience living at MR Residencies. 
             Real reviews from verified tenants.
           </p>
         </div>
 
         {/* Overall Stats */}
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-2xl p-8 mb-8 border border-gray-700">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Average Rating */}
             <div className="text-center">
-              <div className="text-6xl font-bold text-green-600 mb-2">
+              <div className="text-6xl font-bold text-slate-300 mb-2">
                 {overallStats.averageRating}
               </div>
               <div className="flex justify-center mb-2">
                 {renderStars(Math.round(overallStats.averageRating))}
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-400">
                 Based on {overallStats.totalReviews} verified reviews
               </p>
             </div>
 
             {/* Rating Distribution */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Rating Distribution</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">Rating Distribution</h3>
               {[5, 4, 3, 2, 1].map(rating => (
                 <div key={rating} className="flex items-center mb-2">
-                  <span className="w-8 text-sm">{rating}</span>
+                  <span className="w-8 text-sm text-gray-300">{rating}</span>
                   <Star size={16} className="text-yellow-400 fill-current mx-2" />
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                  <div className="flex-1 bg-gray-700 rounded-full h-2 mx-2">
                     <div 
-                      className="bg-green-600 h-2 rounded-full"
+                      className="bg-slate-500 h-2 rounded-full"
                       style={{
                         width: `${(overallStats.ratingDistribution[rating as keyof typeof overallStats.ratingDistribution] / overallStats.totalReviews) * 100}%`
                       }}
                     />
                   </div>
-                  <span className="w-8 text-sm text-gray-600">
+                  <span className="w-8 text-sm text-gray-400">
                     {overallStats.ratingDistribution[rating as keyof typeof overallStats.ratingDistribution]}
                   </span>
                 </div>
@@ -172,14 +171,14 @@ const Reviews = () => {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-2xl p-6 mb-8 border border-gray-700">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Block</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Filter by Block</label>
               <select
                 value={selectedBlock}
                 onChange={(e) => setSelectedBlock(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                className="w-full p-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500"
               >
                 <option value="all">All Blocks</option>
                 <option value="A">Block A - Garden View</option>
@@ -190,11 +189,11 @@ const Reviews = () => {
               </select>
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Rating</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Filter by Rating</label>
               <select
                 value={selectedRating}
                 onChange={(e) => setSelectedRating(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                className="w-full p-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500"
               >
                 <option value="all">All Ratings</option>
                 <option value="5">5 Stars</option>
@@ -205,7 +204,7 @@ const Reviews = () => {
               </select>
             </div>
           </div>
-          <p className="text-sm text-gray-600 mt-4">
+          <p className="text-sm text-gray-400 mt-4">
             Showing {filteredReviews.length} of {reviews.length} reviews
           </p>
         </div>
@@ -213,19 +212,19 @@ const Reviews = () => {
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredReviews.map(review => (
-            <div key={review.id} className="bg-white rounded-lg shadow-md p-6">
+            <div key={review.id} className="bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-2xl p-6 border border-gray-700">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                    <User className="text-green-600" size={24} />
+                  <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-gray-700 rounded-full flex items-center justify-center mr-4">
+                    <User className="text-slate-200" size={24} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{review.name}</h3>
-                    <p className="text-sm text-gray-600">
+                    <h3 className="font-semibold text-white">{review.name}</h3>
+                    <p className="text-sm text-gray-400">
                       Apartment {review.apartment}
                       {review.verified && (
-                        <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                        <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs bg-slate-700 text-slate-200">
                           ✓ Verified Tenant
                         </span>
                       )}
@@ -241,7 +240,7 @@ const Reviews = () => {
               </div>
 
               {/* Review Content */}
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 {review.review}
               </p>
             </div>
@@ -251,17 +250,17 @@ const Reviews = () => {
         {/* No Results */}
         {filteredReviews.length === 0 && (
           <div className="text-center py-12">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Star className="text-gray-400" size={48} />
+            <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Star className="text-gray-500" size={48} />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No reviews found</h3>
-            <p className="text-gray-600 mb-4">Try adjusting your filter criteria.</p>
+            <h3 className="text-xl font-semibold text-white mb-2">No reviews found</h3>
+            <p className="text-gray-400 mb-4">Try adjusting your filter criteria.</p>
             <button
               onClick={() => {
                 setSelectedBlock('all');
                 setSelectedRating('all');
               }}
-              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              className="bg-gradient-to-r from-slate-600 to-gray-700 text-white px-6 py-2 rounded-lg hover:from-slate-500 hover:to-gray-600 transition-all shadow-lg"
             >
               Clear Filters
             </button>
@@ -269,7 +268,7 @@ const Reviews = () => {
         )}
 
         {/* CTA Section */}
-        <div className="bg-green-600 rounded-lg text-white text-center py-12 mt-12">
+        <div className="bg-gradient-to-r from-slate-600 to-gray-700 rounded-lg text-white text-center py-12 mt-12 shadow-2xl">
           <h2 className="text-2xl font-bold mb-4">Ready to Join Our Community?</h2>
           <p className="text-lg mb-6 max-w-2xl mx-auto">
             Experience the same quality living that our residents rave about. 
@@ -277,7 +276,7 @@ const Reviews = () => {
           </p>
           <a 
             href="/apartments" 
-            className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="bg-white text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
           >
             Browse Available Apartments
           </a>

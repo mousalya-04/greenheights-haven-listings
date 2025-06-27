@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ChatBox from "./components/ChatBox";
 import Home from "./pages/Home";
 import Apartments from "./pages/Apartments";
 import Facilities from "./pages/Facilities";
@@ -39,6 +40,7 @@ const App = () => (
                   <Home />
                 </main>
                 <Footer />
+                <ChatBox />
               </>
             } />
             <Route path="/*" element={
@@ -60,6 +62,7 @@ const App = () => (
                   </Routes>
                 </main>
                 <Footer />
+                <ChatBox />
               </>
             } />
           </Routes>
