@@ -1,11 +1,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, User, Bot, Sparkles } from 'lucide-react';
+import { MessageCircle, Send, X, Bot, User, Home, MapPin, Phone, Calendar } from 'lucide-react';
 
 interface Message {
   id: number;
   text: string;
-  isBot: boolean;
+  isUser: boolean;
   timestamp: Date;
 }
 
@@ -14,83 +14,107 @@ const ChatBox = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! 👋 Welcome to MR Residencies. I'm here to help you with any questions about our apartments, facilities, or services. How can I assist you today?",
-      isBot: true,
+      text: "👋 Hello! I'm your MR Residencies assistant. How can I help you today?",
+      isUser: false,
       timestamp: new Date()
     }
   ]);
-  const [inputText, setInputText] = useState('');
+  const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
+  const quickReplies = [
+    { text: "Available Apartments", icon: Home },
+    { text: "Location & Directions", icon: MapPin },
+    { text: "Contact Information", icon: Phone },
+    { text: "Schedule a Visit", icon: Calendar }
+  ];
+
+  const getAutoReply = (message: string): string => {
+    const lowerMessage = message.toLowerCase();
     
-    if (lowerMessage.includes('price') || lowerMessage.includes('rent') || lowerMessage.includes('cost')) {
-      return "Our apartments range from ₹20,000 to ₹40,000 per month depending on the size and block. Would you like specific pricing for a particular type of apartment?";
+    if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('rent')) {
+      return "💰 Our apartment pricing ranges from ₹25,000 to ₹85,000 per month depending on the block and size. Would you like specific pricing for a particular apartment type?";
     }
+    
     if (lowerMessage.includes('available') || lowerMessage.includes('vacancy')) {
-      return "We have several apartments available across different blocks. You can check our Apartments page for real-time availability or I can help you find something specific. What type of apartment are you looking for?";
-    }
-    if (lowerMessage.includes('facilities') || lowerMessage.includes('amenities')) {
-      return "We offer amazing facilities including: 🏊‍♂️ Swimming Pool, 💪 Gym & Fitness Center, 🌿 Rooftop Gardens, 🎭 Open Air Theatre, 🏃‍♂️ Jogging Track, and much more! Would you like details about any specific facility?";
-    }
-    if (lowerMessage.includes('visit') || lowerMessage.includes('tour') || lowerMessage.includes('schedule')) {
-      return "I'd be happy to help you schedule a visit! You can use our Schedule Visit page or call us at +91 98765 43210. When would be convenient for you?";
-    }
-    if (lowerMessage.includes('location') || lowerMessage.includes('address')) {
-      return "We're located at Main Avenue Road, Coimbatore, Tamil Nadu – 641001. It's a prime location with easy access to schools, hospitals, and shopping centers.";
-    }
-    if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
-      return "You can reach us at:\n📞 Phone: +91 98765 43210\n📧 Email: support@mrresidencies.com\nOr visit our Contact page for more details!";
-    }
-    if (lowerMessage.includes('block') || lowerMessage.includes('building')) {
-      return "We have 5 blocks: Block A (Garden View), Block B (Premium Living), Block C (Fitness Hub), Block D (Family Zone), and Block E (Executive Suites). Each has unique features and amenities.";
-    }
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return "Hello! 😊 Great to hear from you! How can I help you find your perfect home at MR Residencies today?";
-    }
-    if (lowerMessage.includes('thank')) {
-      return "You're very welcome! 😊 If you have any other questions about MR Residencies, feel free to ask. We're here to help make your home search as smooth as possible!";
+      return "🏠 We currently have apartments available in all blocks! Block A (Garden View), Block B (Premium), Block C (Fitness Hub), Block D (Family Zone), and Block E (Executive). Which type interests you?";
     }
     
-    return "That's a great question! For detailed information about that topic, I'd recommend checking our website pages or calling our team at +91 98765 43210. They can provide you with comprehensive details. Is there anything else I can help you with?";
+    if (lowerMessage.includes('location') || lowerMessage.includes('address') || lowerMessage.includes('direction')) {
+      return "📍 MR Residencies is located at Main Avenue Road, Coimbatore, Tamil Nadu – 641001. We're easily accessible by public transport and have ample parking. Need specific directions?";
+    }
+    
+    if (lowerMessage.includes('facilities') || lowerMessage.includes('amenities')) {
+      return "🌟 Our premium facilities include: Rooftop Gardens, Fully-equipped Gym, Swimming Pool, Open Air Theatre, Kids Playground, 24/7 Security, Power Backup, and High-speed Internet. What would you like to know more about?";
+    }
+    
+    if (lowerMessage.includes('visit') || lowerMessage.includes('tour') || lowerMessage.includes('appointment')) {
+      return "📅 I'd be happy to schedule a visit for you! Our property tours are available Monday-Friday (9 AM-7 PM), Saturday (9 AM-5 PM), and Sunday (10 AM-4 PM). What day works best for you?";
+    }
+    
+    if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('call')) {
+      return "📞 You can reach us at +91 98765 43210 (available 24/7) or email support@mrresidencies.com. Our office hours are Mon-Fri: 9 AM-7 PM, Sat: 9 AM-5 PM, Sun: 10 AM-4 PM.";
+    }
+    
+    if (lowerMessage.includes('block') || lowerMessage.includes('type')) {
+      return "🏢 We have 5 distinct blocks: Block A (Garden View with rooftop gardens), Block B (Premium living), Block C (Fitness-focused with gym), Block D (Family-friendly), and Block E (Executive luxury). Which block interests you most?";
+    }
+    
+    if (lowerMessage.includes('security') || lowerMessage.includes('safety')) {
+      return "🔒 Security is our top priority! We have 24/7 professional security, CCTV surveillance, secure entry systems, and emergency response protocols. Your safety and peace of mind are guaranteed.";
+    }
+    
+    if (lowerMessage.includes('parking') || lowerMessage.includes('car')) {
+      return "🚗 We provide covered parking for all residents with additional visitor parking. Each apartment comes with designated parking spots. Electric vehicle charging stations are also available.";
+    }
+    
+    if (lowerMessage.includes('pet') || lowerMessage.includes('dog') || lowerMessage.includes('cat')) {
+      return "🐕 Yes, we are pet-friendly! We welcome your furry family members with open arms. We have designated pet areas and walking spaces within the complex.";
+    }
+    
+    return "Thank you for your question! For detailed information, I'd recommend speaking with our leasing team at +91 98765 43210 or visiting our office. Is there anything specific about our apartments or facilities you'd like to know?";
   };
 
   const handleSendMessage = async () => {
-    if (!inputText.trim()) return;
+    if (!inputMessage.trim()) return;
 
     const userMessage: Message = {
-      id: messages.length + 1,
-      text: inputText,
-      isBot: false,
+      id: Date.now(),
+      text: inputMessage,
+      isUser: true,
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
-    setInputText('');
+    setInputMessage('');
     setIsTyping(true);
 
-    // Simulate bot typing delay
+    // Simulate typing delay
     setTimeout(() => {
-      const botResponse: Message = {
-        id: messages.length + 2,
-        text: getBotResponse(inputText),
-        isBot: true,
+      const botReply: Message = {
+        id: Date.now() + 1,
+        text: getAutoReply(inputMessage),
+        isUser: false,
         timestamp: new Date()
       };
       
-      setMessages(prev => [...prev, botResponse]);
+      setMessages(prev => [...prev, botReply]);
       setIsTyping(false);
     }, 1500);
+  };
+
+  const handleQuickReply = (text: string) => {
+    setInputMessage(text);
+    handleSendMessage();
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -102,72 +126,62 @@ const ChatBox = () => {
 
   return (
     <>
-      {/* Chat Toggle Button */}
+      {/* Chat Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full shadow-2xl transition-all duration-300 ${
-          isOpen 
-            ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
-            : 'bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 hover:from-pink-600 hover:to-pink-800'
-        } flex items-center justify-center group animate-pulse-pink`}
+        onClick={() => setIsOpen(true)}
+        className={`fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-700 text-white rounded-full professional-shadow-lg flex items-center justify-center transition-all duration-300 z-50 ${!isOpen ? 'hover:scale-110 professional-glow' : 'scale-0'}`}
+        style={{ display: isOpen ? 'none' : 'flex' }}
       >
-        {isOpen ? (
-          <X size={28} className="text-white" />
-        ) : (
-          <div className="relative">
-            <MessageCircle size={28} className="text-white group-hover:scale-110 transition-transform" />
-            <Sparkles size={12} className="absolute -top-1 -right-1 text-yellow-300 animate-pulse" />
-          </div>
-        )}
-        {!isOpen && (
-          <div className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse shadow-lg"></div>
-        )}
+        <MessageCircle size={24} />
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-pink-400 rounded-full animate-pulse"></div>
       </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 h-96 glass-effect rounded-3xl shadow-2xl border border-pink-500/30 flex flex-col">
+        <div className="fixed bottom-6 right-6 w-96 h-[500px] card-glass professional-shadow-lg rounded-2xl border border-pink-600/30 flex flex-col z-50">
           {/* Header */}
-          <div className="bg-gradient-to-r from-pink-500 to-pink-600 p-4 rounded-t-3xl">
+          <div className="bg-gradient-to-r from-pink-600 to-pink-700 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <Bot size={20} className="text-pink-600" />
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <Bot size={20} />
               </div>
               <div>
-                <h3 className="text-white font-playfair font-semibold">MR Assistant</h3>
-                <p className="text-pink-100 text-xs font-poppins">✨ Online • Ready to help ✨</p>
+                <h3 className="font-semibold">MR Assistant</h3>
+                <p className="text-xs text-pink-100">Online • Ready to help</p>
               </div>
             </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white/80 hover:text-white transition-colors"
+            >
+              <X size={20} />
+            </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
+                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
-                <div className={`flex items-start space-x-2 max-w-[80%] ${message.isBot ? '' : 'flex-row-reverse space-x-reverse'}`}>
+                <div className={`flex items-start space-x-2 max-w-[80%] ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    message.isBot 
-                      ? 'bg-gradient-to-br from-pink-500 to-pink-600' 
-                      : 'bg-gradient-to-br from-gray-600 to-gray-700'
+                    message.isUser 
+                      ? 'bg-gradient-to-br from-pink-600 to-pink-700' 
+                      : 'bg-gray-700'
                   }`}>
-                    {message.isBot ? (
-                      <Bot size={14} className="text-white" />
-                    ) : (
-                      <User size={14} className="text-white" />
-                    )}
+                    {message.isUser ? <User size={16} className="text-white" /> : <Bot size={16} className="text-gray-300" />}
                   </div>
-                  <div className={`p-3 rounded-2xl ${
-                    message.isBot 
-                      ? 'bg-gray-800/70 text-gray-100 backdrop-blur-sm' 
-                      : 'bg-gradient-to-br from-pink-500 to-pink-600 text-white'
-                  }`}>
-                    <p className="text-sm whitespace-pre-wrap font-poppins">{message.text}</p>
-                    <p className={`text-xs mt-1 font-inter ${
-                      message.isBot ? 'text-gray-400' : 'text-pink-100'
-                    }`}>
+                  <div
+                    className={`px-4 py-2 rounded-2xl ${
+                      message.isUser
+                        ? 'bg-gradient-to-r from-pink-600 to-pink-700 text-white'
+                        : 'bg-gray-800 text-gray-200'
+                    }`}
+                  >
+                    <p className="text-sm leading-relaxed">{message.text}</p>
+                    <p className={`text-xs mt-1 ${message.isUser ? 'text-pink-100' : 'text-gray-500'}`}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -175,18 +189,17 @@ const ChatBox = () => {
               </div>
             ))}
             
-            {/* Typing Indicator */}
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center">
-                    <Bot size={14} className="text-white" />
+                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                    <Bot size={16} className="text-gray-300" />
                   </div>
-                  <div className="bg-gray-800/70 backdrop-blur-sm p-3 rounded-2xl">
+                  <div className="bg-gray-800 px-4 py-2 rounded-2xl">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </div>
@@ -195,23 +208,45 @@ const ChatBox = () => {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Quick Replies */}
+          {messages.length === 1 && (
+            <div className="px-4 pb-2">
+              <p className="text-xs text-gray-400 mb-2">Quick options:</p>
+              <div className="grid grid-cols-2 gap-2">
+                {quickReplies.map((reply, index) => {
+                  const IconComponent = reply.icon;
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleQuickReply(reply.text)}
+                      className="flex items-center space-x-2 text-xs bg-gray-800/50 text-gray-300 px-3 py-2 rounded-lg hover:bg-pink-600/20 hover:text-pink-400 transition-all"
+                    >
+                      <IconComponent size={12} />
+                      <span>{reply.text}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Input */}
-          <div className="p-4 border-t border-pink-500/30">
-            <div className="flex space-x-3">
+          <div className="p-4 border-t border-gray-700">
+            <div className="flex space-x-2">
               <input
                 type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-3 bg-gray-800/70 text-white rounded-2xl border border-pink-500/30 focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm placeholder-gray-400 backdrop-blur-sm font-poppins"
+                className="flex-1 px-4 py-2 bg-gray-800/50 text-white rounded-xl border border-gray-600 focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 text-sm"
               />
               <button
                 onClick={handleSendMessage}
-                disabled={!inputText.trim()}
-                className="w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl flex items-center justify-center transition-all shadow-lg transform hover:scale-105"
+                disabled={!inputMessage.trim()}
+                className="w-10 h-10 bg-gradient-to-r from-pink-600 to-pink-700 text-white rounded-xl flex items-center justify-center hover:from-pink-700 hover:to-pink-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={18} className="text-white" />
+                <Send size={16} />
               </button>
             </div>
           </div>

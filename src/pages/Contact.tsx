@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Calendar, Award } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,11 +14,9 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
     alert('Thank you for your inquiry! We will get back to you within 24 hours.');
     
-    // Reset form
     setFormData({
       name: '',
       email: '',
@@ -36,33 +35,56 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-16 professional-fade">
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold gradient-text mb-6">
             Get in Touch
           </h1>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Have questions about our apartments or want to schedule a visit? 
-            We're here to help you find your perfect home at MR Residencies.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Connect with our professional team for premium apartment inquiries. 
+            We're here to help you find your perfect luxury home.
           </p>
+        </div>
+
+        {/* Stats Row */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+          <div className="card-glass p-6 text-center hover-professional">
+            <Award className="mx-auto text-pink-400 mb-4" size={32} />
+            <h3 className="text-2xl font-bold text-white mb-2">500+</h3>
+            <p className="text-gray-400">Happy Residents</p>
+          </div>
+          <div className="card-glass p-6 text-center hover-professional">
+            <MessageSquare className="mx-auto text-pink-400 mb-4" size={32} />
+            <h3 className="text-2xl font-bold text-white mb-2">24/7</h3>
+            <p className="text-gray-400">Customer Support</p>
+          </div>
+          <div className="card-glass p-6 text-center hover-professional">
+            <Calendar className="mx-auto text-pink-400 mb-4" size={32} />
+            <h3 className="text-2xl font-bold text-white mb-2">100+</h3>
+            <p className="text-gray-400">Apartments Available</p>
+          </div>
+          <div className="card-glass p-6 text-center hover-professional">
+            <Clock className="mx-auto text-pink-400 mb-4" size={32} />
+            <h3 className="text-2xl font-bold text-white mb-2">&lt;24h</h3>
+            <p className="text-gray-400">Response Time</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
+          <div className="professional-slide">
+            <h2 className="text-3xl font-playfair font-bold text-white mb-8">Contact Information</h2>
             
-            <div className="space-y-6">
-              {/* Address */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-slate-200" size={24} />
+            <div className="space-y-8">
+              <div className="flex items-start space-x-6 card-glass p-6 hover-professional">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-700 rounded-xl flex items-center justify-center flex-shrink-0 professional-shadow">
+                  <MapPin className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Address</h3>
-                  <p className="text-gray-300">
+                  <h3 className="font-semibold text-white text-xl mb-2">Address</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed">
                     MR Residencies<br />
                     Main Avenue Road, Coimbatore<br />
                     Tamil Nadu – 641001
@@ -70,38 +92,35 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="text-slate-200" size={24} />
+              <div className="flex items-start space-x-6 card-glass p-6 hover-professional">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-700 rounded-xl flex items-center justify-center flex-shrink-0 professional-shadow">
+                  <Phone className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Phone</h3>
-                  <p className="text-gray-300">+91 98765 43210</p>
-                  <p className="text-sm text-gray-400">Available 24/7 for emergencies</p>
+                  <h3 className="font-semibold text-white text-xl mb-2">Phone</h3>
+                  <p className="text-gray-300 text-lg">+91 98765 43210</p>
+                  <p className="text-pink-400 text-sm">Available 24/7 for emergencies</p>
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="text-slate-200" size={24} />
+              <div className="flex items-start space-x-6 card-glass p-6 hover-professional">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-700 rounded-xl flex items-center justify-center flex-shrink-0 professional-shadow">
+                  <Mail className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Email</h3>
-                  <p className="text-gray-300">support@mrresidencies.com</p>
-                  <p className="text-sm text-gray-400">We respond within 24 hours</p>
+                  <h3 className="font-semibold text-white text-xl mb-2">Email</h3>
+                  <p className="text-gray-300 text-lg">support@mrresidencies.com</p>
+                  <p className="text-pink-400 text-sm">We respond within 24 hours</p>
                 </div>
               </div>
 
-              {/* Office Hours */}
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-600 to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Clock className="text-slate-200" size={24} />
+              <div className="flex items-start space-x-6 card-glass p-6 hover-professional">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-700 rounded-xl flex items-center justify-center flex-shrink-0 professional-shadow">
+                  <Clock className="text-white" size={28} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Office Hours</h3>
-                  <div className="text-gray-300 space-y-1">
+                  <h3 className="font-semibold text-white text-xl mb-2">Office Hours</h3>
+                  <div className="text-gray-300 space-y-1 text-lg">
                     <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
                     <p>Saturday: 9:00 AM - 5:00 PM</p>
                     <p>Sunday: 10:00 AM - 4:00 PM</p>
@@ -111,18 +130,18 @@ const Contact = () => {
             </div>
 
             {/* Quick Actions */}
-            <div className="mt-8 space-y-4">
-              <h3 className="text-lg font-semibold text-white">Quick Actions</h3>
-              <div className="space-y-2">
+            <div className="mt-12 space-y-4">
+              <h3 className="text-2xl font-playfair font-semibold text-white mb-6">Quick Actions</h3>
+              <div className="space-y-4">
                 <a 
                   href="tel:+919876543210" 
-                  className="block w-full bg-gradient-to-r from-slate-600 to-gray-700 text-white text-center py-3 rounded-lg hover:from-slate-500 hover:to-gray-600 transition-all shadow-lg"
+                  className="block w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white text-center py-4 rounded-xl hover:from-pink-700 hover:to-pink-800 transition-all professional-shadow font-semibold text-lg"
                 >
                   Call Now for Immediate Assistance
                 </a>
                 <a 
                   href="/apartments" 
-                  className="block w-full bg-gradient-to-r from-gray-700 to-slate-800 text-white text-center py-3 rounded-lg hover:from-gray-600 hover:to-slate-700 transition-all shadow-lg"
+                  className="block w-full bg-gradient-to-r from-gray-700 to-gray-800 text-white text-center py-4 rounded-xl hover:from-gray-600 hover:to-gray-700 transition-all professional-shadow font-semibold text-lg"
                 >
                   Browse Available Apartments
                 </a>
@@ -131,9 +150,12 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div>
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-2xl p-8 border border-gray-700">
-              <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
+          <div className="professional-fade">
+            <div className="card-glass p-8 professional-shadow-lg">
+              <div className="flex items-center space-x-3 mb-8">
+                <Send className="text-pink-400" size={32} />
+                <h2 className="text-3xl font-playfair font-bold text-white">Send us a Message</h2>
+              </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
@@ -148,12 +170,11 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 transition-all"
                     placeholder="Your full name"
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email Address *
@@ -165,12 +186,11 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 transition-all"
                     placeholder="your@email.com"
                   />
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
                     Phone Number *
@@ -182,12 +202,11 @@ const Contact = () => {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 transition-all"
                     placeholder="+91 98765 43210"
                   />
                 </div>
 
-                {/* Interested In */}
                 <div>
                   <label htmlFor="interestedIn" className="block text-sm font-medium text-gray-300 mb-2">
                     I'm Interested In
@@ -197,7 +216,7 @@ const Contact = () => {
                     name="interestedIn"
                     value={formData.interestedIn}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent transition-all"
                   >
                     <option value="">Select an option</option>
                     <option value="renting">Renting an Apartment</option>
@@ -209,7 +228,6 @@ const Contact = () => {
                   </select>
                 </div>
 
-                {/* Subject */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                     Subject
@@ -220,12 +238,11 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 transition-all"
                     placeholder="Brief subject of your inquiry"
                   />
                 </div>
 
-                {/* Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Message *
@@ -237,15 +254,14 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-white rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-transparent placeholder-gray-400 transition-all"
                     placeholder="Please provide details about your inquiry..."
                   />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-slate-600 to-gray-700 text-white py-3 px-6 rounded-lg font-semibold hover:from-slate-500 hover:to-gray-600 transition-all shadow-lg"
+                  className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white py-4 px-6 rounded-xl font-semibold hover:from-pink-700 hover:to-pink-800 transition-all professional-shadow text-lg"
                 >
                   Send Message
                 </button>
@@ -255,13 +271,13 @@ const Contact = () => {
         </div>
 
         {/* Map Section */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">Find Us on Map</h2>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-2xl p-4 border border-gray-700">
-            <div className="bg-gray-700 rounded-lg h-96 flex items-center justify-center">
+        <div className="mt-20 professional-fade">
+          <h2 className="text-3xl font-playfair font-bold text-white mb-8 text-center">Find Us on Map</h2>
+          <div className="card-glass p-8 professional-shadow-lg">
+            <div className="bg-gray-800/50 rounded-xl h-96 flex items-center justify-center">
               <div className="text-center">
-                <MapPin className="mx-auto text-gray-400 mb-4" size={48} />
-                <p className="text-gray-300">
+                <MapPin className="mx-auto text-pink-400 mb-4" size={64} />
+                <p className="text-gray-300 text-xl">
                   Interactive map will be displayed here<br />
                   MR Residencies, Main Avenue Road, Coimbatore
                 </p>

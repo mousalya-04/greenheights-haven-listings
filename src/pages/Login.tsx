@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, Phone, Building2, Sparkles } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,13 +30,13 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-pink-900 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute top-20 right-10 w-32 h-32 bg-blue-400 rounded-full opacity-15 animate-bounce"></div>
-        <div className="absolute bottom-20 left-20 w-28 h-28 bg-green-400 rounded-full opacity-25 animate-pulse"></div>
-        <div className="absolute bottom-10 right-20 w-36 h-36 bg-orange-400 rounded-full opacity-10 animate-bounce"></div>
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-pink-500/20 rounded-full animate-pulse"></div>
+        <div className="absolute top-20 right-10 w-32 h-32 bg-pink-400/15 rounded-full animate-bounce"></div>
+        <div className="absolute bottom-20 left-20 w-28 h-28 bg-pink-600/25 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-10 right-20 w-36 h-36 bg-pink-500/10 rounded-full animate-bounce"></div>
       </div>
 
       {/* Background Images */}
@@ -45,28 +45,28 @@ const Login = () => {
           <img 
             src="https://images.unsplash.com/photo-1493606278519-11aa9f86e40a?w=400&h=400&fit=crop" 
             alt="Modern apartment exterior"
-            className="w-full h-full object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
           />
         </div>
         <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15 transform -rotate-12 hover:rotate-12 transition-transform duration-500">
           <img 
             src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=400&fit=crop" 
             alt="Apartment interior"
-            className="w-full h-full object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
           />
         </div>
         <div className="absolute bottom-32 left-32 w-28 h-28 rounded-full opacity-10 transform rotate-45 hover:-rotate-45 transition-transform duration-500">
           <img 
             src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=400&fit=crop" 
             alt="Apartment living room"
-            className="w-full h-full object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
           />
         </div>
         <div className="absolute bottom-10 right-32 w-36 h-36 rounded-full opacity-15 transform -rotate-45 hover:rotate-90 transition-transform duration-700">
           <img 
             src="https://images.unsplash.com/photo-1486304873000-235643847519?w=400&h=400&fit=crop" 
             alt="Modern apartment"
-            className="w-full h-full object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
           />
         </div>
       </div>
@@ -74,51 +74,52 @@ const Login = () => {
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-md">
         {/* Logo Section */}
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-2xl mb-4 transform hover:scale-110 transition-transform duration-300">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">MR</span>
+        <div className="text-center mb-8 professional-fade">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-pink-600 to-pink-700 rounded-2xl professional-shadow-lg mb-6 transform hover:scale-110 transition-transform duration-300 relative">
+            <Building2 className="text-white" size={32} />
+            <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full shadow-md">
+              <Sparkles className="text-white w-full h-full p-1" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2 animate-pulse">MR Residencies</h1>
-          <p className="text-yellow-200">Your Dream Home Awaits</p>
+          <h1 className="text-4xl font-playfair font-bold gradient-text mb-3">MR Residencies</h1>
+          <p className="text-pink-300 text-lg">Professional Living Experience</p>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 transform hover:scale-105 transition-transform duration-300">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              {isSignUp ? '🌟 Create Account' : '👋 Welcome Back'}
+        <div className="card-glass p-8 professional-shadow-lg border border-pink-600/20">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-playfair font-bold text-white mb-3">
+              {isSignUp ? '✨ Create Account' : '👋 Welcome Back'}
             </h2>
-            <p className="text-gray-600">
-              {isSignUp ? 'Join our amazing community today' : 'Sign in to your account'}
+            <p className="text-gray-300">
+              {isSignUp ? 'Join our premium community today' : 'Sign in to your account'}
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {isSignUp && (
               <>
                 <div className="relative group">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors" size={20} />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
                   <input
                     type="text"
                     name="name"
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-purple-300"
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
                     required
                   />
                 </div>
                 <div className="relative group">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors" size={20} />
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-purple-300"
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
                     required
                   />
                 </div>
@@ -126,33 +127,33 @@ const Login = () => {
             )}
             
             <div className="relative group">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors" size={20} />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-purple-300"
+                className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
                 required
               />
             </div>
 
             <div className="relative group">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors" size={20} />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 hover:border-purple-300"
+                className="w-full pl-10 pr-12 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-pink-500 transition-colors"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -165,11 +166,11 @@ const Login = () => {
                     type="checkbox" 
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-gray-300 text-purple-600 focus:ring-purple-500" 
+                    className="rounded border-gray-600 text-pink-600 focus:ring-pink-500 bg-gray-800" 
                   />
-                  <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                  <span className="ml-2 text-sm text-gray-300">Remember me</span>
                 </label>
-                <a href="#" className="text-sm text-purple-600 hover:text-purple-700 font-medium">
+                <a href="#" className="text-sm text-pink-400 hover:text-pink-300 font-medium">
                   Forgot password?
                 </a>
               </div>
@@ -177,28 +178,28 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-purple-700 hover:via-pink-600 hover:to-red-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white py-4 px-4 rounded-xl font-semibold hover:from-pink-700 hover:to-pink-800 transition-all duration-300 professional-shadow transform hover:scale-105 text-lg"
             >
               {isSignUp ? '🚀 Create Account' : '🔐 Sign In'}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-gray-600">
+          <div className="mt-8 text-center">
+            <p className="text-gray-300">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}
               <button
                 onClick={() => setIsSignUp(!isSignUp)}
-                className="ml-1 text-purple-600 hover:text-purple-700 font-semibold transition-colors"
+                className="ml-1 text-pink-400 hover:text-pink-300 font-semibold transition-colors"
               >
                 {isSignUp ? 'Sign In' : 'Sign Up'}
               </button>
             </p>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="mt-8 pt-6 border-t border-gray-700">
             <Link
               to="/"
-              className="flex items-center justify-center text-gray-600 hover:text-purple-600 transition-colors font-medium"
+              className="flex items-center justify-center text-gray-400 hover:text-pink-400 transition-colors font-medium"
             >
               ← Back to Home
             </Link>
