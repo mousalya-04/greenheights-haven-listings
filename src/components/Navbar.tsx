@@ -54,16 +54,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-black via-gray-900 to-black professional-shadow-lg border-b border-pink-600/20 backdrop-blur-lg">
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-black via-gray-900 to-black professional-shadow-lg border-b border-violet-600/20 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/home" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-pink-600 via-pink-700 to-pink-800 rounded-xl flex items-center justify-center professional-shadow transform group-hover:scale-110 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-violet-600 via-violet-700 to-violet-800 rounded-xl flex items-center justify-center professional-shadow transform group-hover:scale-110 transition-all duration-300">
                 <Building2 className="text-white" size={24} />
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full shadow-md">
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-violet-400 to-violet-600 rounded-full shadow-md">
                 <Sparkles className="text-white w-full h-full p-0.5" />
               </div>
             </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
               <h1 className="text-xl font-playfair font-bold gradient-text">
                 MR Residencies
               </h1>
-              <p className="text-xs text-pink-300 font-poppins font-medium tracking-wide">Professional Living</p>
+              <p className="text-xs text-violet-300 font-poppins font-medium tracking-wide">Professional Living</p>
             </div>
           </Link>
 
@@ -83,9 +83,9 @@ const Navbar = () => {
                 placeholder="Search premium apartments..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
+                className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-violet-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
               />
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-violet-400" size={18} />
             </form>
           </div>
 
@@ -94,7 +94,7 @@ const Navbar = () => {
             <Link 
               to="/home" 
               className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/home') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
+                isActive('/home') ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-300 hover:text-violet-300'
               }`}
             >
               Home
@@ -102,7 +102,7 @@ const Navbar = () => {
             <Link 
               to="/apartments" 
               className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/apartments') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
+                isActive('/apartments') ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-300 hover:text-violet-300'
               }`}
             >
               Apartments
@@ -110,7 +110,7 @@ const Navbar = () => {
             <Link 
               to="/facilities" 
               className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/facilities') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
+                isActive('/facilities') ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-300 hover:text-violet-300'
               }`}
             >
               Facilities
@@ -118,7 +118,7 @@ const Navbar = () => {
             <Link 
               to="/reviews" 
               className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/reviews') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
+                isActive('/reviews') ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-300 hover:text-violet-300'
               }`}
             >
               Reviews
@@ -126,7 +126,7 @@ const Navbar = () => {
             <Link 
               to="/contact" 
               className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/contact') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
+                isActive('/contact') ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-300 hover:text-violet-300'
               }`}
             >
               Contact
@@ -137,29 +137,29 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <Link 
               to="/favorites" 
-              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
+              className="p-3 text-gray-300 hover:text-violet-400 transition-all duration-300 relative transform hover:scale-110"
             >
               <Heart size={20} />
               {favoritesCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
+                <span className="absolute -top-1 -right-1 bg-violet-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
                   {favoritesCount}
                 </span>
               )}
             </Link>
             <Link 
               to="/cart" 
-              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
+              className="p-3 text-gray-300 hover:text-violet-400 transition-all duration-300 relative transform hover:scale-110"
             >
               <ShoppingCart size={20} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
+                <span className="absolute -top-1 -right-1 bg-violet-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
                   {cartCount}
                 </span>
               )}
             </Link>
             <Link 
               to="/login" 
-              className="flex items-center space-x-2 bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl hover:from-pink-700 hover:to-pink-800 transition-all duration-300 professional-shadow transform hover:scale-105"
+              className="flex items-center space-x-2 bg-gradient-to-r from-violet-600 to-violet-700 text-white px-6 py-3 rounded-xl hover:from-violet-700 hover:to-violet-800 transition-all duration-300 professional-shadow transform hover:scale-105"
             >
               <User size={18} />
               <span className="text-sm font-poppins font-medium">Login</span>
@@ -167,7 +167,7 @@ const Navbar = () => {
 
             {/* Mobile menu button */}
             <button 
-              className="md:hidden p-3 text-gray-300 hover:text-pink-400 transition-colors"
+              className="md:hidden p-3 text-gray-300 hover:text-violet-400 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -183,47 +183,47 @@ const Navbar = () => {
               placeholder="Search premium apartments..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
+              className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-violet-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
             />
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-violet-400" size={18} />
           </form>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-pink-600/20 glass-effect">
+          <div className="md:hidden border-t border-violet-600/20 glass-effect">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
                 to="/home" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-violet-400 hover:bg-violet-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/apartments" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-violet-400 hover:bg-violet-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apartments
               </Link>
               <Link 
                 to="/facilities" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-violet-400 hover:bg-violet-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Facilities
               </Link>
               <Link 
                 to="/reviews" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-violet-400 hover:bg-violet-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reviews
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
+                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-violet-400 hover:bg-violet-500/10 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
