@@ -36,7 +36,7 @@ const PropertyManagement = () => {
                 <p className="text-gray-400 text-sm">Total Units</p>
                 <p className="text-2xl font-bold text-white">{stats.totalUnits}</p>
               </div>
-              <FileText className="text-violet-400" size={32} />
+              <FileText className="text-pink-400" size={32} />
             </div>
           </div>
           <div className="card-glass p-6 hover-professional">
@@ -45,7 +45,7 @@ const PropertyManagement = () => {
                 <p className="text-gray-400 text-sm">Occupied</p>
                 <p className="text-2xl font-bold text-white">{stats.occupiedUnits}</p>
               </div>
-              <Users className="text-violet-400" size={32} />
+              <Users className="text-pink-400" size={32} />
             </div>
           </div>
           <div className="card-glass p-6 hover-professional">
@@ -54,7 +54,7 @@ const PropertyManagement = () => {
                 <p className="text-gray-400 text-sm">Monthly Revenue</p>
                 <p className="text-2xl font-bold text-white">₹{(stats.monthlyRevenue / 100000).toFixed(1)}L</p>
               </div>
-              <DollarSign className="text-violet-400" size={32} />
+              <DollarSign className="text-pink-400" size={32} />
             </div>
           </div>
           <div className="card-glass p-6 hover-professional">
@@ -63,7 +63,7 @@ const PropertyManagement = () => {
                 <p className="text-gray-400 text-sm">Pending Issues</p>
                 <p className="text-2xl font-bold text-white">{stats.pendingMaintenance}</p>
               </div>
-              <Bell className="text-violet-400" size={32} />
+              <Bell className="text-pink-400" size={32} />
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ const PropertyManagement = () => {
               <div className="space-y-4">
                 {recentActivities.map(activity => (
                   <div key={activity.id} className="flex items-start space-x-4 p-4 bg-gray-800/50 rounded-lg">
-                    <div className="w-2 h-2 bg-violet-500 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pink-500 rounded-full mt-2"></div>
                     <div className="flex-1">
                       <p className="text-white">{activity.description}</p>
                       <p className="text-gray-400 text-sm">{activity.time}</p>
@@ -93,7 +93,7 @@ const PropertyManagement = () => {
             <div className="card-glass p-6">
               <h2 className="text-xl font-playfair font-semibold text-white mb-6">Quick Actions</h2>
               <div className="space-y-3">
-                <button className="w-full bg-gradient-to-r from-violet-600 to-violet-700 text-white p-3 rounded-lg hover:from-violet-700 hover:to-violet-800 transition-all text-left">
+                <button className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white p-3 rounded-lg hover:from-pink-700 hover:to-pink-800 transition-all text-left">
                   <Settings className="inline mr-2" size={16} />
                   Manage Properties
                 </button>

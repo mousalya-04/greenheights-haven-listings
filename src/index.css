@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional Black/Violet Theme - Corporate & Vibrant */
+/* Professional Black/Pink Theme - Corporate & Vibrant */
 
 @layer base {
   :root {
@@ -17,7 +17,7 @@
     --popover: 20 20 20;
     --popover-foreground: 248 250 252;
 
-    --primary: 139 69 19;
+    --primary: 219 39 119;
     --primary-foreground: 248 250 252;
 
     --secondary: 64 64 64;
@@ -26,7 +26,7 @@
     --muted: 39 39 42;
     --muted-foreground: 161 161 170;
 
-    --accent: 139 69 19;
+    --accent: 219 39 119;
     --accent-foreground: 248 250 252;
 
     --destructive: 239 68 68;
@@ -34,18 +34,18 @@
 
     --border: 39 39 42;
     --input: 39 39 42;
-    --ring: 139 69 19;
+    --ring: 219 39 119;
 
     --radius: 0.75rem;
 
     --sidebar-background: 12 12 12;
     --sidebar-foreground: 248 250 252;
-    --sidebar-primary: 139 69 19;
+    --sidebar-primary: 219 39 119;
     --sidebar-primary-foreground: 248 250 252;
     --sidebar-accent: 39 39 42;
     --sidebar-accent-foreground: 248 250 252;
     --sidebar-border: 39 39 42;
-    --sidebar-ring: 139 69 19;
+    --sidebar-ring: 219 39 119;
   }
 }
 
@@ -66,7 +66,7 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-violet-400 via-violet-500 to-violet-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 bg-clip-text text-transparent;
   }
 
   .gradient-text-secondary {
@@ -74,25 +74,21 @@
   }
 
   .professional-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(139, 69, 19, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(219, 39, 119, 0.1);
   }
 
   .professional-shadow-lg {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(139, 69, 19, 0.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(219, 39, 119, 0.1);
   }
 
   .glass-effect {
     background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(139, 69, 19, 0.2);
+    border: 1px solid rgba(219, 39, 119, 0.2);
   }
 
   .professional-glow {
-    box-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
-  }
-
-  .neon-violet {
-    text-shadow: 0 0 10px rgba(139, 69, 19, 0.5), 0 0 20px rgba(139, 69, 19, 0.3), 0 0 30px rgba(139, 69, 19, 0.2);
+    box-shadow: 0 0 20px rgba(219, 39, 119, 0.3);
   }
 }
 
@@ -102,7 +98,7 @@
 }
 
 .btn-primary {
-  @apply btn-professional bg-gradient-to-r from-violet-600 to-violet-700 text-white hover:from-violet-700 hover:to-violet-800 focus:ring-violet-500 professional-shadow;
+  @apply btn-professional bg-gradient-to-r from-pink-600 to-pink-700 text-white hover:from-pink-700 hover:to-pink-800 focus:ring-pink-500 professional-shadow;
 }
 
 .btn-secondary {
@@ -110,20 +106,16 @@
 }
 
 .btn-outline {
-  @apply btn-professional border-2 border-violet-600 text-violet-400 hover:bg-violet-600 hover:text-white focus:ring-violet-500 professional-shadow;
+  @apply btn-professional border-2 border-pink-600 text-pink-400 hover:bg-pink-600 hover:text-white focus:ring-pink-500 professional-shadow;
 }
 
 /* Professional Card Styles */
 .card-professional {
-  @apply bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl border border-gray-800 professional-shadow-lg hover:border-violet-600/30 transition-all duration-300;
+  @apply bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl border border-gray-800 professional-shadow-lg hover:border-pink-600/30 transition-all duration-300;
 }
 
 .card-glass {
-  @apply glass-effect rounded-2xl professional-shadow-lg hover:border-violet-600/50 transition-all duration-300;
-}
-
-.card-modern {
-  @apply bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl border border-gray-800 professional-shadow-lg hover:border-violet-600/30 transition-all duration-300;
+  @apply glass-effect rounded-2xl professional-shadow-lg hover:border-pink-600/50 transition-all duration-300;
 }
 
 /* Professional Animations */
@@ -172,7 +164,7 @@
 
 /* Professional Gradients */
 .gradient-professional {
-  background: linear-gradient(135deg, #8b4513 0%, #654321 50%, #000000 100%);
+  background: linear-gradient(135deg, #db2777 0%, #be185d 50%, #000000 100%);
 }
 
 .gradient-professional-card {
@@ -190,5 +182,5 @@
 
 /* Professional Hover Effects */
 .hover-professional {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-violet-600/20;
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-pink-600/20;
 }
