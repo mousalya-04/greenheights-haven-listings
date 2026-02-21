@@ -23,10 +23,10 @@ const FacilityDetails = () => {
         'UV water purification'
       ],
       images: [
-        'https://images.unsplash.com/photo-1563453392212-326d32d2d6cb?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1523772354886-34a1dc2f0588?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1585128903994-9788298932a4?w=600&h=400&fit=crop'
       ]
     },
     'security': {
@@ -45,10 +45,10 @@ const FacilityDetails = () => {
         'Patrol services'
       ],
       images: [
-        'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618666-fbd6c0cd7d50?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1548092372-0d1bd40894a3?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&h=400&fit=crop'
       ]
     },
     'parking': {
@@ -67,10 +67,10 @@ const FacilityDetails = () => {
         'Electric vehicle charging'
       ],
       images: [
-        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1590674899284-11bbd4ba6ce5?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1567449830102-be7c00f8c4b2?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1621929747188-0b4dc28498d2?w=600&h=400&fit=crop'
       ]
     },
     'bus-stand': {
@@ -90,9 +90,9 @@ const FacilityDetails = () => {
       ],
       images: [
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618666-fbd6c0cd7d50?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1593241620737-6d96b9e3a34e?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1581262208435-41726149a759?w=600&h=400&fit=crop'
       ]
     },
     'transport': {
@@ -111,10 +111,10 @@ const FacilityDetails = () => {
         'Bicycle sharing'
       ],
       images: [
-        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618666-fbd6c0cd7d50?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1567443024551-f3e3cc2be870?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=600&h=400&fit=crop'
       ]
     },
     'hospital': {
@@ -287,10 +287,10 @@ const FacilityDetails = () => {
         'Lifeguard on duty'
       ],
       images: [
-        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=600&h=400&fit=crop'
       ]
     },
     'garden': {
@@ -309,10 +309,10 @@ const FacilityDetails = () => {
         'Organic herb garden'
       ],
       images: [
-        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1469827160215-9d29e96e72f4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1568393691622-c7ba131d63b4?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1596401057633-54a8fe8ef3db?w=600&h=400&fit=crop'
       ]
     },
     'jogging': {
@@ -331,10 +331,10 @@ const FacilityDetails = () => {
         'Rest areas with benches'
       ],
       images: [
-        'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=600&h=400&fit=crop'
       ]
     },
     'theatre': {
@@ -353,10 +353,10 @@ const FacilityDetails = () => {
         'Cultural program venue'
       ],
       images: [
-        'https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1489599388092-898fb94b8936?w=600&h=400&fit=crop',
-        'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&h=400&fit=crop'
+        'https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1578944032637-f09897c5233d?w=600&h=400&fit=crop'
       ]
     }
   };
