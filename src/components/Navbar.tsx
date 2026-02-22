@@ -1,48 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles, LogOut, CalendarDays, UserCircle } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [favoritesCount, setFavoritesCount] = useState(0);
-  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
-
-  // Load counts from localStorage on component mount
-  useEffect(() => {
-    const savedFavorites = localStorage.getItem('favorites');
-    const savedCart = localStorage.getItem('cart');
-    
-    if (savedFavorites) {
-      setFavoritesCount(JSON.parse(savedFavorites).length);
-    }
-    if (savedCart) {
-      setCartCount(JSON.parse(savedCart).length);
-    }
-
-    // Listen for storage changes
-    const handleStorageChange = () => {
-      const favorites = localStorage.getItem('favorites');
-      const cart = localStorage.getItem('cart');
-      
-      setFavoritesCount(favorites ? JSON.parse(favorites).length : 0);
-      setCartCount(cart ? JSON.parse(cart).length : 0);
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Also listen for custom events when items are added/removed
-    window.addEventListener('favoritesUpdated', handleStorageChange);
-    window.addEventListener('cartUpdated', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('favoritesUpdated', handleStorageChange);
-      window.removeEventListener('cartUpdated', handleStorageChange);
-    };
-  }, []);
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -51,6 +17,11 @@ const Navbar = () => {
     if (searchTerm.trim()) {
       window.location.href = `/apartments?search=${encodeURIComponent(searchTerm)}`;
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/login');
   };
 
   return (
@@ -68,9 +39,7 @@ const Navbar = () => {
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-playfair font-bold gradient-text">
-                MR Residencies
-              </h1>
+              <h1 className="text-xl font-playfair font-bold gradient-text">MR Residencies</h1>
               <p className="text-xs text-pink-300 font-poppins font-medium tracking-wide">Professional Living</p>
             </div>
           </Link>
@@ -78,156 +47,80 @@ const Navbar = () => {
           {/* Search Bar - Desktop */}
           <div className="hidden md:flex flex-1 max-w-md mx-8">
             <form onSubmit={handleSearch} className="w-full relative">
-              <input
-                type="text"
-                placeholder="Search premium apartments..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
-              />
+              <input type="text" placeholder="Search premium apartments..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins" />
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
             </form>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/home" 
-              className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/home') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/apartments" 
-              className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/apartments') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
-              }`}
-            >
-              Apartments
-            </Link>
-            <Link 
-              to="/facilities" 
-              className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/facilities') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
-              }`}
-            >
-              Facilities
-            </Link>
-            <Link 
-              to="/reviews" 
-              className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/reviews') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
-              }`}
-            >
-              Reviews
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`text-sm font-poppins font-medium transition-all duration-300 ${
-                isActive('/contact') ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'
-              }`}
-            >
-              Contact
-            </Link>
+          <div className="hidden md:flex items-center space-x-6">
+            {[
+              { path: '/home', label: 'Home' },
+              { path: '/apartments', label: 'Apartments' },
+              { path: '/facilities', label: 'Facilities' },
+              { path: '/reviews', label: 'Reviews' },
+              { path: '/contact', label: 'Contact' },
+            ].map(item => (
+              <Link key={item.path} to={item.path}
+                className={`text-sm font-poppins font-medium transition-all duration-300 ${isActive(item.path) ? 'text-pink-400 border-b-2 border-pink-400' : 'text-gray-300 hover:text-pink-300'}`}>
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
-            <Link 
-              to="/favorites" 
-              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
-            >
+          <div className="flex items-center space-x-3">
+            <Link to="/favorites" className="p-2 text-gray-300 hover:text-pink-400 transition-all relative">
               <Heart size={20} />
-              {favoritesCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
-                  {favoritesCount}
-                </span>
-              )}
             </Link>
-            <Link 
-              to="/cart" 
-              className="p-3 text-gray-300 hover:text-pink-400 transition-all duration-300 relative transform hover:scale-110"
-            >
+            <Link to="/cart" className="p-2 text-gray-300 hover:text-pink-400 transition-all relative">
               <ShoppingCart size={20} />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center professional-glow">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-            <Link 
-              to="/login" 
-              className="flex items-center space-x-2 bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl hover:from-pink-700 hover:to-pink-800 transition-all duration-300 professional-shadow transform hover:scale-105"
-            >
-              <User size={18} />
-              <span className="text-sm font-poppins font-medium">Login</span>
             </Link>
 
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden p-3 text-gray-300 hover:text-pink-400 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            {user ? (
+              <div className="hidden md:flex items-center space-x-2">
+                <Link to="/bookings" className="p-2 text-gray-300 hover:text-pink-400 transition-all" title="My Bookings">
+                  <CalendarDays size={20} />
+                </Link>
+                <Link to="/profile" className="p-2 text-gray-300 hover:text-pink-400 transition-all" title="Profile">
+                  <UserCircle size={20} />
+                </Link>
+                <button onClick={handleSignOut} className="p-2 text-gray-300 hover:text-red-400 transition-all" title="Sign Out">
+                  <LogOut size={20} />
+                </button>
+              </div>
+            ) : (
+              <Link to="/login"
+                className="hidden md:flex items-center space-x-2 bg-gradient-to-r from-pink-600 to-pink-700 text-white px-5 py-2.5 rounded-xl hover:from-pink-700 hover:to-pink-800 transition-all professional-shadow">
+                <User size={18} />
+                <span className="text-sm font-poppins font-medium">Login</span>
+              </Link>
+            )}
+
+            <button className="md:hidden p-3 text-gray-300 hover:text-pink-400 transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Search */}
-        <div className="md:hidden pb-4">
-          <form onSubmit={handleSearch} className="relative">
-            <input
-              type="text"
-              placeholder="Search premium apartments..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-12 rounded-xl border-0 bg-gray-900/70 text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-600 focus:outline-none backdrop-blur-sm glass-effect font-poppins"
-            />
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400" size={18} />
-          </form>
-        </div>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-pink-600/20 glass-effect">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link 
-                to="/home" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/apartments" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Apartments
-              </Link>
-              <Link 
-                to="/facilities" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Facilities
-              </Link>
-              <Link 
-                to="/reviews" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Reviews
-              </Link>
-              <Link 
-                to="/contact" 
-                className="block px-4 py-3 text-sm font-poppins font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+          <div className="md:hidden border-t border-pink-600/20 glass-effect pb-4">
+            <div className="px-2 pt-2 space-y-1">
+              {['/home', '/apartments', '/facilities', '/reviews', '/contact'].map(path => (
+                <Link key={path} to={path} onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 rounded-lg">
+                  {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                </Link>
+              ))}
+              {user && (
+                <>
+                  <Link to="/bookings" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">My Bookings</Link>
+                  <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">Profile</Link>
+                  <button onClick={() => { handleSignOut(); setIsMenuOpen(false); }} className="block w-full text-left px-4 py-3 text-sm font-poppins text-red-400 hover:bg-red-500/10 rounded-lg">Sign Out</button>
+                </>
+              )}
             </div>
           </div>
         )}

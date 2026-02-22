@@ -1,13 +1,17 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone, Building2, Sparkles } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { signIn, signUp, user } = useAuth();
+  const { toast } = useToast();
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,18 +19,35 @@ const Login = () => {
     phone: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Redirect if already logged in
+  React.useEffect(() => {
+    if (user) navigate('/home');
+  }, [user, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert(isSignUp ? 'Account created successfully!' : 'Login successful!');
-    navigate('/home');
+    setLoading(true);
+
+    if (isSignUp) {
+      const { error } = await signUp(formData.email, formData.password, formData.name, formData.phone);
+      if (error) {
+        toast({ title: 'Sign Up Failed', description: error.message, variant: 'destructive' });
+      } else {
+        toast({ title: 'Account Created!', description: 'Please check your email to verify your account.' });
+      }
+    } else {
+      const { error } = await signIn(formData.email, formData.password);
+      if (error) {
+        toast({ title: 'Login Failed', description: error.message, variant: 'destructive' });
+      } else {
+        navigate('/home');
+      }
+    }
+    setLoading(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -42,32 +63,16 @@ const Login = () => {
       {/* Background Images */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 left-10 w-32 h-32 rounded-full opacity-20 transform rotate-12 hover:rotate-45 transition-transform duration-500">
-          <img 
-            src="https://images.unsplash.com/photo-1493606278519-11aa9f86e40a?w=400&h=400&fit=crop" 
-            alt="Modern apartment exterior"
-            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
-          />
+          <img src="https://images.unsplash.com/photo-1493606278519-11aa9f86e40a?w=400&h=400&fit=crop" alt="Modern apartment exterior" className="w-full h-full object-cover rounded-full border-2 border-pink-500/30" />
         </div>
         <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15 transform -rotate-12 hover:rotate-12 transition-transform duration-500">
-          <img 
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=400&fit=crop" 
-            alt="Apartment interior"
-            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
-          />
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=400&fit=crop" alt="Apartment interior" className="w-full h-full object-cover rounded-full border-2 border-pink-500/30" />
         </div>
         <div className="absolute bottom-32 left-32 w-28 h-28 rounded-full opacity-10 transform rotate-45 hover:-rotate-45 transition-transform duration-500">
-          <img 
-            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=400&fit=crop" 
-            alt="Apartment living room"
-            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
-          />
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=400&fit=crop" alt="Apartment living room" className="w-full h-full object-cover rounded-full border-2 border-pink-500/30" />
         </div>
         <div className="absolute bottom-10 right-32 w-36 h-36 rounded-full opacity-15 transform -rotate-45 hover:rotate-90 transition-transform duration-700">
-          <img 
-            src="https://images.unsplash.com/photo-1486304873000-235643847519?w=400&h=400&fit=crop" 
-            alt="Modern apartment"
-            className="w-full h-full object-cover rounded-full border-2 border-pink-500/30"
-          />
+          <img src="https://images.unsplash.com/photo-1486304873000-235643847519?w=400&h=400&fit=crop" alt="Modern apartment" className="w-full h-full object-cover rounded-full border-2 border-pink-500/30" />
         </div>
       </div>
 
@@ -101,60 +106,28 @@ const Login = () => {
               <>
                 <div className="relative group">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
-                    required
-                  />
+                  <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400" required />
                 </div>
                 <div className="relative group">
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
-                    required
-                  />
+                  <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400" required />
                 </div>
               </>
             )}
-            
+
             <div className="relative group">
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
-                required
-              />
+              <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400" required />
             </div>
 
             <div className="relative group">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-12 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-pink-500 transition-colors"
-              >
+              <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" value={formData.password} onChange={handleInputChange}
+                className="w-full pl-10 pr-12 py-3 border-2 border-gray-700 bg-gray-800/50 text-white rounded-xl focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition-all duration-300 hover:border-pink-500/50 placeholder-gray-400" required minLength={6} />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-pink-500 transition-colors">
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
@@ -162,47 +135,25 @@ const Login = () => {
             {!isSignUp && (
               <div className="flex items-center justify-between">
                 <label className="flex items-center cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-gray-600 text-pink-600 focus:ring-pink-500 bg-gray-800" 
-                  />
+                  <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="rounded border-gray-600 text-pink-600 focus:ring-pink-500 bg-gray-800" />
                   <span className="ml-2 text-sm text-gray-300">Remember me</span>
                 </label>
-                <a href="#" className="text-sm text-pink-400 hover:text-pink-300 font-medium">
-                  Forgot password?
-                </a>
               </div>
             )}
 
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white py-4 px-4 rounded-xl font-semibold hover:from-pink-700 hover:to-pink-800 transition-all duration-300 professional-shadow transform hover:scale-105 text-lg"
-            >
-              {isSignUp ? '🚀 Create Account' : '🔐 Sign In'}
+            <button type="submit" disabled={loading}
+              className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white py-4 px-4 rounded-xl font-semibold hover:from-pink-700 hover:to-pink-800 transition-all duration-300 professional-shadow transform hover:scale-105 text-lg disabled:opacity-50 disabled:transform-none">
+              {loading ? '⏳ Please wait...' : (isSignUp ? '🚀 Create Account' : '🔐 Sign In')}
             </button>
           </form>
 
           <div className="mt-8 text-center">
             <p className="text-gray-300">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}
-              <button
-                onClick={() => setIsSignUp(!isSignUp)}
-                className="ml-1 text-pink-400 hover:text-pink-300 font-semibold transition-colors"
-              >
+              <button onClick={() => setIsSignUp(!isSignUp)} className="ml-1 text-pink-400 hover:text-pink-300 font-semibold transition-colors">
                 {isSignUp ? 'Sign In' : 'Sign Up'}
               </button>
             </p>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-gray-700">
-            <Link
-              to="/"
-              className="flex items-center justify-center text-gray-400 hover:text-pink-400 transition-colors font-medium"
-            >
-              ← Back to Home
-            </Link>
           </div>
         </div>
       </div>

@@ -14,16 +14,270 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      apartment_images: {
+        Row: {
+          apartment_id: string
+          created_at: string
+          display_order: number
+          id: string
+          image_type: string
+          image_url: string
+        }
+        Insert: {
+          apartment_id: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          image_type?: string
+          image_url: string
+        }
+        Update: {
+          apartment_id?: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          image_type?: string
+          image_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "apartment_images_apartment_id_fkey"
+            columns: ["apartment_id"]
+            isOneToOne: false
+            referencedRelation: "apartments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      apartment_reviews: {
+        Row: {
+          apartment_id: string
+          comment: string | null
+          created_at: string
+          id: string
+          rating: number
+          user_id: string
+        }
+        Insert: {
+          apartment_id: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating: number
+          user_id: string
+        }
+        Update: {
+          apartment_id?: string
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "apartment_reviews_apartment_id_fkey"
+            columns: ["apartment_id"]
+            isOneToOne: false
+            referencedRelation: "apartments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      apartments: {
+        Row: {
+          accessibility: string[] | null
+          amenities: string[] | null
+          available: boolean
+          balconies: number
+          bathrooms: number
+          bedrooms: number
+          block: string
+          created_at: string
+          description: string | null
+          features: string[] | null
+          floor: number
+          furnishing: string
+          id: string
+          location: string | null
+          number: string
+          rating: number
+          rent: number
+          reviews_count: number
+          sqft: number
+          type: string
+          unique_features: string[] | null
+          updated_at: string
+          yearly_rent: number
+        }
+        Insert: {
+          accessibility?: string[] | null
+          amenities?: string[] | null
+          available?: boolean
+          balconies?: number
+          bathrooms?: number
+          bedrooms?: number
+          block: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          floor?: number
+          furnishing?: string
+          id?: string
+          location?: string | null
+          number: string
+          rating?: number
+          rent?: number
+          reviews_count?: number
+          sqft?: number
+          type?: string
+          unique_features?: string[] | null
+          updated_at?: string
+          yearly_rent?: number
+        }
+        Update: {
+          accessibility?: string[] | null
+          amenities?: string[] | null
+          available?: boolean
+          balconies?: number
+          bathrooms?: number
+          bedrooms?: number
+          block?: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          floor?: number
+          furnishing?: string
+          id?: string
+          location?: string | null
+          number?: string
+          rating?: number
+          rent?: number
+          reviews_count?: number
+          sqft?: number
+          type?: string
+          unique_features?: string[] | null
+          updated_at?: string
+          yearly_rent?: number
+        }
+        Relationships: []
+      }
+      bookings: {
+        Row: {
+          apartment_id: string
+          booking_date: string
+          check_in_date: string
+          check_out_date: string
+          created_at: string
+          id: string
+          notes: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          apartment_id: string
+          booking_date?: string
+          check_in_date: string
+          check_out_date: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          apartment_id?: string
+          booking_date?: string
+          check_in_date?: string
+          check_out_date?: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_apartment_id_fkey"
+            columns: ["apartment_id"]
+            isOneToOne: false
+            referencedRelation: "apartments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +404,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
