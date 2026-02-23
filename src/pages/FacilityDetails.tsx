@@ -363,8 +363,16 @@ const FacilityDetails = () => {
   };
 
   const facility = facilityData[facilityId || ''];
+  const [dbImages, setDbImages] = useState<string[]>([]);
 
-  if (!facility) {
+  useEffect(() => {
+    if (!facilityId) return;
+    supabase.from('facility_images').select('image_url').eq('facility_id', facilityId).order('display_order').then(({ data }) => {
+      if (data && data.length > 0) setDbImages(data.map(d => d.image_url));
+    });
+  }, [facilityId]);
+
+  const displayImages = dbImages.length > 0 ? dbImages : (facility?.images || []);
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 flex items-center justify-center">
         <div className="text-center">
