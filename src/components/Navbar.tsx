@@ -97,6 +97,11 @@ const Navbar = () => {
                 <Link to="/profile" className="p-2 text-gray-300 hover:text-pink-400 transition-all" title="Profile">
                   <UserCircle size={20} />
                 </Link>
+                {isAdmin && (
+                  <Link to="/admin" className="p-2 text-yellow-400 hover:text-yellow-300 transition-all" title="Admin Dashboard">
+                    <Shield size={20} />
+                  </Link>
+                )}
                 <button onClick={handleSignOut} className="p-2 text-gray-300 hover:text-red-400 transition-all" title="Sign Out">
                   <LogOut size={20} />
                 </button>
