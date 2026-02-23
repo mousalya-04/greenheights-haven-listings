@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles, LogOut, CalendarDays, UserCircle } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles, LogOut, CalendarDays, UserCircle, Shield } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,16 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      if (!user) { setIsAdmin(false); return; }
+      const { data } = await supabase.rpc('has_role', { _user_id: user.id, _role: 'admin' });
+      setIsAdmin(!!data);
+    };
+    checkAdmin();
+  }, [user]);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -86,6 +97,11 @@ const Navbar = () => {
                 <Link to="/profile" className="p-2 text-gray-300 hover:text-pink-400 transition-all" title="Profile">
                   <UserCircle size={20} />
                 </Link>
+                {isAdmin && (
+                  <Link to="/admin" className="p-2 text-yellow-400 hover:text-yellow-300 transition-all" title="Admin Dashboard">
+                    <Shield size={20} />
+                  </Link>
+                )}
                 <button onClick={handleSignOut} className="p-2 text-gray-300 hover:text-red-400 transition-all" title="Sign Out">
                   <LogOut size={20} />
                 </button>
@@ -118,6 +134,9 @@ const Navbar = () => {
                 <>
                   <Link to="/bookings" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">My Bookings</Link>
                   <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">Profile</Link>
+                  {isAdmin && (
+                    <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-yellow-400 hover:text-yellow-300 rounded-lg">Admin Dashboard</Link>
+                  )}
                   <button onClick={() => { handleSignOut(); setIsMenuOpen(false); }} className="block w-full text-left px-4 py-3 text-sm font-poppins text-red-400 hover:bg-red-500/10 rounded-lg">Sign Out</button>
                 </>
               )}

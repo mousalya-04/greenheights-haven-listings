@@ -23,6 +23,7 @@ import ScheduleVisit from "./pages/ScheduleVisit";
 import VirtualTour from "./pages/VirtualTour";
 import BookingHistory from "./pages/BookingHistory";
 import Profile from "./pages/Profile";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
                       <Route path="/virtual-tour" element={<VirtualTour />} />
                       <Route path="/bookings" element={<BookingHistory />} />
                       <Route path="/profile" element={<Profile />} />
+                      <Route path="/admin" element={<AdminDashboard />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </main>

@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, Clock, Users, Phone } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const FacilityDetails = () => {
   const { facilityId } = useParams();
@@ -362,6 +363,16 @@ const FacilityDetails = () => {
   };
 
   const facility = facilityData[facilityId || ''];
+  const [dbImages, setDbImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!facilityId) return;
+    supabase.from('facility_images').select('image_url').eq('facility_id', facilityId).order('display_order').then(({ data }) => {
+      if (data && data.length > 0) setDbImages(data.map(d => d.image_url));
+    });
+  }, [facilityId]);
+
+  const displayImages = dbImages.length > 0 ? dbImages : (facility?.images || []);
 
   if (!facility) {
     return (
@@ -432,7 +443,7 @@ const FacilityDetails = () => {
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-slate-900 mb-8">Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {facility.images.map((image: string, index: number) => (
+            {displayImages.map((image: string, index: number) => (
               <div key={index} className="aspect-w-4 aspect-h-3">
                 <img
                   src={image}
