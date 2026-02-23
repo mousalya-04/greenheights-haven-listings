@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles, LogOut, CalendarDays, UserCircle } from 'lucide-react';
+import { Search, Heart, ShoppingCart, Menu, X, User, Building2, Sparkles, LogOut, CalendarDays, UserCircle, Shield } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
