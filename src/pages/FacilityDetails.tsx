@@ -373,6 +373,8 @@ const FacilityDetails = () => {
   }, [facilityId]);
 
   const displayImages = dbImages.length > 0 ? dbImages : (facility?.images || []);
+
+  if (!facility) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 flex items-center justify-center">
         <div className="text-center">
@@ -385,8 +387,7 @@ const FacilityDetails = () => {
     );
   }
 
-  if (!facility) {
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
+  return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
