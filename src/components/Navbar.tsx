@@ -134,6 +134,9 @@ const Navbar = () => {
                 <>
                   <Link to="/bookings" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">My Bookings</Link>
                   <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-gray-300 hover:text-pink-400 rounded-lg">Profile</Link>
+                  {isAdmin && (
+                    <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-sm font-poppins text-yellow-400 hover:text-yellow-300 rounded-lg">Admin Dashboard</Link>
+                  )}
                   <button onClick={() => { handleSignOut(); setIsMenuOpen(false); }} className="block w-full text-left px-4 py-3 text-sm font-poppins text-red-400 hover:bg-red-500/10 rounded-lg">Sign Out</button>
                 </>
               )}
